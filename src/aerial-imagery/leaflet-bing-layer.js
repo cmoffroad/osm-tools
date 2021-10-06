@@ -70,13 +70,12 @@ L.TileLayer.Bing = L.TileLayer.extend({
     culture: 'en-US',
     minZoom: 1,
     minNativeZoom: 1,
-    maxNativeZoom: 19,
-    attribution: 'Bing'
+    maxNativeZoom: 19
   },
 
   statics: {
     METADATA_URL: 'https://dev.virtualearth.net/REST/v1/Imagery/Metadata/{imagerySet}?key={bingMapsKey}&include=ImageryProviders&uriScheme=https',
-    POINT_METADATA_URL: 'https://dev.virtualearth.net/REST/v1/Imagery/Metadata/{imagerySet}/{lat},{lng}?zl={z}&key={bingMapsKey}&uriScheme=https'
+    POINT_METADATA_URL: 'https://dev.virtualearth.net/REST/v1/Imagery/Metadata/{imagerySet}/{lat},{lng}?zl={z}&o=&key={bingMapsKey}&uriScheme=https'
   },
 
   initialize: function (options) {
@@ -166,19 +165,19 @@ L.TileLayer.Bing = L.TileLayer.extend({
 
   // Update the attribution control every time the map is moved
   onAdd: function (map) {
-    map.on('moveend', this._updateAttribution, this)
+    // map.on('moveend', this._updateAttribution, this)
     L.TileLayer.prototype.onAdd.call(this, map)
-    this._attributions.forEach(function (attribution) {
-      map.attributionControl.addAttribution(attribution)
-    })
+    // this._attributions.forEach(function (attribution) {
+    //   map.attributionControl.addAttribution(attribution)
+    // })
   },
 
   // Clean up events and remove attributions from attribution control
   onRemove: function (map) {
-    map.off('moveend', this._updateAttribution, this)
-    this._attributions.forEach(function (attribution) {
-      map.attributionControl.removeAttribution(attribution)
-    })
+    // map.off('moveend', this._updateAttribution, this)
+    // this._attributions.forEach(function (attribution) {
+    //   map.attributionControl.removeAttribution(attribution)
+    // })
     L.TileLayer.prototype.onRemove.call(this, map)
   },
 
@@ -219,7 +218,7 @@ L.TileLayer.Bing = L.TileLayer.extend({
     this._url = resource.imageUrl
     this._imageryProviders = resource.imageryProviders || []
     this.options.subdomains = resource.imageUrlSubdomains
-    this._updateAttribution()
+    // this._updateAttribution()
     return Promise.resolve()
   },
 
@@ -228,25 +227,25 @@ L.TileLayer.Bing = L.TileLayer.extend({
    * within the current map bounds
    */
   _updateAttribution: function () {
-    // var map = this._map
-    // if (!map || !map.attributionControl) return
-    // var zoom = map.getZoom()
-    // var bbox = toBingBBox(map.getBounds().toBBoxString())
-    // this._fetch.then(function () {
-    //   var newAttributions = this._getAttributions(bbox, zoom)
-    //   var prevAttributions = this._attributions
-    //   // Add any new provider attributions in the current area to the attribution control
-    //   newAttributions.forEach(function (attr) {
-    //     if (prevAttributions.indexOf(attr) > -1) return
-    //     map.attributionControl.addAttribution(attr)
-    //   })
-    //   // Remove any attributions that are no longer in the current area from the attribution control
-    //   prevAttributions.filter(function (attr) {
-    //     if (newAttributions.indexOf(attr) > -1) return
-    //     map.attributionControl.removeAttribution(attr)
-    //   })
-    //   this._attributions = newAttributions
-    // }.bind(this))
+    var map = this._map
+    if (!map || !map.attributionControl) return
+    var zoom = map.getZoom()
+    var bbox = toBingBBox(map.getBounds().toBBoxString())
+    this._fetch.then(function () {
+      var newAttributions = this._getAttributions(bbox, zoom)
+      var prevAttributions = this._attributions
+      // Add any new provider attributions in the current area to the attribution control
+      newAttributions.forEach(function (attr) {
+        if (prevAttributions.indexOf(attr) > -1) return
+        map.attributionControl.addAttribution(attr)
+      })
+      // Remove any attributions that are no longer in the current area from the attribution control
+      prevAttributions.filter(function (attr) {
+        if (newAttributions.indexOf(attr) > -1) return
+        map.attributionControl.removeAttribution(attr)
+      })
+      this._attributions = newAttributions
+    }.bind(this))
   },
 
   /**

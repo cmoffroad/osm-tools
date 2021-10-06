@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>OSM Satellite</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.0/dist/L.Control.Locate.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@3.1.1/dist/esri-leaflet-geocoder.css"
+    integrity="sha512-IM3Hs+feyi40yZhDH6kV8vQMg4Fh20s9OzInIIAc4nx7aMYMfo+IenRUekoYsHZqGkREUgx0VvlEsgm7nCDW9g=="
+    crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src="./esri-leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.74.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+		<script src="https://unpkg.com/esri-leaflet-geocoder@3.1.1/dist/esri-leaflet-geocoder.js"
+    integrity="sha512-enHceDibjfw6LYtgWU03hke20nVTm+X5CRi9ity06lGQNtC9GkBNl/6LoER6XzSudGiXy++avi1EbIg9Ip4L1w=="
+    crossorigin=""></script>
+    <script src="./leaflet-sync.js"></script>
+    <script src="./leaflet-bing-layer.js"></script>
+    <style>
+    html,body{width:100%;height:100%;margin: 0; padding: 0;}
+    .map { width: 50%; height: 50%; float: left; }
+	</style>
+</head>
+<body>
+<div class="map" id="bing"></div>
+<div class="map" id="maxar"></div>
+<div class="map" id="mapbox"></div>
+<div class="map" id="esri"></div>
+<script>
+	const hash = location.hash || '#6/16.9744649488128/99.82443809509279';
+	const tokens = hash.substring(1).split('/');
+
+	const center = [ tokens[1], tokens[2] ], zoom = tokens[0];
+
+	let metadata = false;
+
+	const bingLayer = new L.TileLayer.Bing("AuhiCJHlGzhg93IqUH_oCpl_-ZUrIE6SPftlyGYUvr9Amx5nzA-WqGcPquyFZl4L", {
+	});
+
+	var bing = new L.Map('bing', { zoomControl: false }).setView(center, zoom).addLayer(bingLayer)
+	.on('moveend', (e) => {
+		const center = e.target.getCenter(), zoom = e.target.getZoom();
+		history.pushState(null,null,`#${zoom}/${center.lat}/${center.lng}`);			
+
+		if (!metadata) {
+			metadata = true;
+			bingLayer.getMetaData(center, zoom)
+			.then(data => {
+				const { vintageEnd } = data.resourceSets[0].resources[0];
+				bing.attributionControl.setPrefix(`Bing (${vintageEnd})`);
+				metadata = false;
+			})
+			.catch(err => {
+				metadata = false;
+			})
+		}
+	})
+	bing.attributionControl.setPrefix('Bing');
+	
+	L.esri.Geocoding.geosearch({
+		useMapBounds: false,
+    providers: [L.esri.Geocoding.arcgisOnlineProvider({
+      apikey: "AAPKb10821df102a46a4b930958d7a6a06593sdla7i0cMWoosp7XXlYflDTAxsZMUq-oKvVOaom9B8CokPvJFd-sE88vOQ2B_rC",
+    })]
+	}).addTo(bing);
+	L.control.locate().addTo(bing);
+
+	var esri = new L.Map('esri', { zoomControl: false }).setView(center, zoom).addLayer(
+		L.esri.tiledMapLayer({
+	    url: 'https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer',
+	    attribution: ''
+	  })
+	)
+	.on('moveend', (e) => {
+		const center = e.target.getCenter(), zoom = e.target.getZoom();
+		history.pushState(null,null,`#${zoom}/${center.lat}/${center.lng}`);			
+	})
+	esri.attributionControl.setPrefix('');
+
+	var maxar = new L.Map('maxar', { zoomControl: false }).setView(center, zoom).addLayer(
+		L.tileLayer('https://services.digitalglobe.com/earthservice/tmsaccess/tms/1.0.0/DigitalGlobe:ImageryTileService@EPSG:3857@jpg/{z}/{x}/{y}.jpg?connectId=c2cbd3f2-003a-46ec-9e46-26a3996d6484', {
+			attribution: 'Maxar Premium Imagery (Beta)',
+			tms: true
+		})
+	)
+	.on('moveend', (e) => {
+		const center = e.target.getCenter(), zoom = e.target.getZoom();
+		history.pushState(null,null,`#${zoom}/${center.lat}/${center.lng}`);			
+	})
+	maxar.attributionControl.setPrefix('');
+
+	var mapbox = new L.Map('mapbox', { zoomControl: false }).setView(center, zoom).addLayer(
+		L.tileLayer('https://d.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}@2x.jpg?access_token={accessToken}', {
+			attribution: 'Mapbox Satellite',
+			accessToken: 'pk.eyJ1Ijoib3BlbnN0cmVldG1hcCIsImEiOiJja2w5YWt5bnYwNjZmMnFwZjhtbHk1MnA1In0.eq2aumBK6JuRoIuBMm6Gew'
+		})
+	)
+	.on('moveend', (e) => {
+		const center = e.target.getCenter(), zoom = e.target.getZoom();
+		history.pushState(null,null,`#${zoom}/${center.lat}/${center.lng}`);			
+	})
+	mapbox.attributionControl.setPrefix('');
+
+	const syncOptions = {
+		// noInitialSync: true, // disables initial synchronization of the maps.
+    syncCursor: true
+	}
+
+	bing.sync(esri, syncOptions);
+	bing.sync(maxar, syncOptions);
+	bing.sync(mapbox, syncOptions);
+
+	esri.sync(bing, syncOptions);
+	esri.sync(maxar, syncOptions);
+	esri.sync(mapbox, syncOptions);
+
+	maxar.sync(bing, syncOptions);
+	maxar.sync(esri, syncOptions);
+	maxar.sync(mapbox, syncOptions);
+
+	mapbox.sync(bing, syncOptions);
+	mapbox.sync(esri, syncOptions);
+	mapbox.sync(maxar, syncOptions);
+	
+</script>
+</body>
+</html>
