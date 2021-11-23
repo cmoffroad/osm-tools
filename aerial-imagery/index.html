@@ -39,7 +39,17 @@
 	const bingLayer = new L.TileLayer.Bing("AuhiCJHlGzhg93IqUH_oCpl_-ZUrIE6SPftlyGYUvr9Amx5nzA-WqGcPquyFZl4L", {
 	});
 
+ //  var overlayMaps = {
+	//   "Google Streets": L.tileLayer('https://mt1.Google.com/vt?z={z}&x={x}&y={y}&lyrs=h'),
+	//   "OSM GPS Traces": L.tileLayer('https://{s}.gps-tile.openstreetmap.org/lines/{z}/{x}/{y}.png', { minZoom: 15 })
+	// };
+	// 
+	// L.control.layers({}, overlayMaps).addTo(mapbox);
+
+
 	var bing = new L.Map('bing', { zoomControl: false }).setView(center, zoom).addLayer(bingLayer)
+	.addLayer(L.tileLayer('https://{s}.gps-tile.openstreetmap.org/lines/{z}/{x}/{y}.png', { minZoom: 15 }))
+	.addLayer(L.tileLayer('https://mt1.Google.com/vt?z={z}&x={x}&y={y}&lyrs=h', {} ))
 	.on('moveend', (e) => {
 		const center = e.target.getCenter(), zoom = e.target.getZoom();
 		history.pushState(null,null,`#${zoom}/${center.lat}/${center.lng}`);			
@@ -67,29 +77,38 @@
 	}).addTo(bing);
 	L.control.locate().addTo(bing);
 
-	var esri = new L.Map('esri', { zoomControl: false }).setView(center, zoom).addLayer(
+	var esri = new L.Map('esri', { zoomControl: false }).setView(center, zoom)
+	.addLayer(
 		L.esri.tiledMapLayer({
 	    url: 'https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer',
 	    attribution: ''
 	  })
 	)
+	.addLayer(L.tileLayer('https://{s}.gps-tile.openstreetmap.org/lines/{z}/{x}/{y}.png', { minZoom: 15 }))
+	.addLayer(L.tileLayer('https://mt1.Google.com/vt?z={z}&x={x}&y={y}&lyrs=h', {} ))
 	.on('moveend', (e) => {
 		const center = e.target.getCenter(), zoom = e.target.getZoom();
 		history.pushState(null,null,`#${zoom}/${center.lat}/${center.lng}`);			
 	})
 	esri.attributionControl.setPrefix('');
 
-	var maxar = new L.Map('maxar', { zoomControl: false }).setView(center, zoom).addLayer(
+
+
+	var maxar = new L.Map('maxar', { zoomControl: false }).setView(center, zoom)
+	.addLayer(
 		L.tileLayer('https://services.digitalglobe.com/earthservice/tmsaccess/tms/1.0.0/DigitalGlobe:ImageryTileService@EPSG:3857@jpg/{z}/{x}/{y}.jpg?connectId=c2cbd3f2-003a-46ec-9e46-26a3996d6484', {
 			attribution: 'Maxar Premium Imagery (Beta)',
 			tms: true
 		})
 	)
+	.addLayer(L.tileLayer('https://{s}.gps-tile.openstreetmap.org/lines/{z}/{x}/{y}.png', { minZoom: 15 }))
+	.addLayer(L.tileLayer('https://mt1.Google.com/vt?z={z}&x={x}&y={y}&lyrs=h', {} ))
 	.on('moveend', (e) => {
 		const center = e.target.getCenter(), zoom = e.target.getZoom();
 		history.pushState(null,null,`#${zoom}/${center.lat}/${center.lng}`);			
 	})
 	maxar.attributionControl.setPrefix('');
+
 
 	var mapbox = new L.Map('mapbox', { zoomControl: false }).setView(center, zoom).addLayer(
 		L.tileLayer('https://d.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}@2x.jpg?access_token={accessToken}', {
@@ -97,6 +116,8 @@
 			accessToken: 'pk.eyJ1Ijoib3BlbnN0cmVldG1hcCIsImEiOiJja2w5YWt5bnYwNjZmMnFwZjhtbHk1MnA1In0.eq2aumBK6JuRoIuBMm6Gew'
 		})
 	)
+	.addLayer(L.tileLayer('https://{s}.gps-tile.openstreetmap.org/lines/{z}/{x}/{y}.png', { minZoom: 15 }))
+	.addLayer(L.tileLayer('https://mt1.Google.com/vt?z={z}&x={x}&y={y}&lyrs=h', {} ))
 	.on('moveend', (e) => {
 		const center = e.target.getCenter(), zoom = e.target.getZoom();
 		history.pushState(null,null,`#${zoom}/${center.lat}/${center.lng}`);			
