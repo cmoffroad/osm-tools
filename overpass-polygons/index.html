@@ -47,10 +47,13 @@ map.addLayer(editableLayers);
 const addLayer = (layer) => {
   const points = layer.getLatLngs()[0];
   const coords = points.map(p => `${p.lat} ${p.lng}`).join(' ');
-  const query  = `(poly: "${coords}")`;
+  const bounds = layer.getBounds();
+  const ne     = bounds.getNorthWest();
+  const se     = bounds.getSouthEast();
+  const query  = `(poly: "${coords}")<br/>bounds: [[${ne.lat}, ${ne.lng}], [${se.lat}, ${se.lng}]]`;
   
   layer
-    .bindPopup(`<b>Overpass filter copied to clipboard!</b><br>Simply append it to the end of your query.`)
+    .bindPopup(query)
     .on('click', () => navigator.clipboard.writeText(query))
     .addTo(editableLayers)
 }
