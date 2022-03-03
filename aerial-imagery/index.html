@@ -31,7 +31,6 @@
 <script>
 	const hash = location.hash || '#6/16.9744649488128/99.82443809509279';
 	const tokens = hash.substring(1).split('/');
-
 	const center = [ tokens[1], tokens[2] ], zoom = tokens[0];
 
 	let metadata = false;
@@ -89,10 +88,13 @@
 
 	var esri = new L.Map('esri', { zoomControl: false }).setView(center, zoom)
 	.addLayer(
-		L.esri.tiledMapLayer({
-	    url: 'https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer',
+		L.tileLayer('https://mt1.Google.com/vt?z={z}&x={x}&y={y}&lyrs=s', {
+			attribution: 'Google Satellite'
+		})
+		/*L.esri.tiledMapLayer({
+			url: 'https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer',
 	    attribution: ''
-	  })
+	  })*/
 	)
 	.addLayer(googleStreetsLayer())
 	.on('moveend', (e) => {
