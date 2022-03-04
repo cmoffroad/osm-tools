@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Compare</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.5.0/mapbox-gl.js'></script>
+    <script src="https://unpkg.com/mapbox-gl-leaflet/leaflet-mapbox-gl.js"></script>
+    <script src="./leaflet-sync.js"></script>
+    <style>
+    html,body{width:100%;height:100%;margin: 0; padding: 0;}
+    .map { width: 50%; height: 33%; float: left; }
+  </style>
+</head>
+<body>
+<div class="map" id="map1"></div>
+<div class="map" id="map2"></div>
+<div class="map" id="map3"></div>
+<div class="map" id="map4"></div>
+<div class="map" id="map5"></div>
+<div class="map" id="map6"></div>
+<script>
+  const hash = location.hash || '#13/19.20742852680121/98.81103515625';
+  const tokens = hash.substring(1).split('/');
+  const center = [ tokens[1], tokens[2] ], zoom = tokens[0];
+
+  var baseLayers = {
+    'osmand-offroad-survey-plugin': L.tileLayer('./tiles/{z}/{x}/{y}.png', {
+      minNativeZoom: 13,
+      maxNativeZoom: 13
+    }),
+    'komoot': L.tileLayer('https://tile.hosted.thunderforest.com/komoot-2/{z}/{x}/{y}.png'),
+    'opentopomap': L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'),
+    // 'cyclemap': L.tileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=6170aad10dfd42a38d4d8c709a536f38'),
+    'mapy.cz': L.tileLayer('https://mapserver.mapy.cz/base-m/{z}-{x}-{y}?sdk=HgUbCgUbGkgqAQkYBxYEHQNHQlJfR1VfQlBZSw%3D%3D'),
+    'strava': L.tileLayer('https://a.tiles.mapbox.com/styles/v1/strava/ck2gt6oil0c7y1cnvlz1uphnu/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic3RyYXZhIiwiYSI6IlpoeXU2U0UifQ.c7yhlZevNRFCqHYm6G6Cyg'),
+    'maps.me': L.mapboxGL({ style: 'https://tiles.maps.me/styles/mapsme_style.json' })
+  };
+
+  const maps = Object.keys(baseLayers).map((key, index) => {
+    console.log(key, index)
+    const map = new L.Map('map' + (index+1), { zoomControl: false })
+      .setView(center, zoom)
+      .addLayer(baseLayers[key])
+      .addLayer(L.tileLayer('./tiles/{z}/{x}/{y}-hillshade.png', { minNativeZoom: 12, maxNativeZoom: 12, transparency: true, opacity: 0.2 }))
+      .on('moveend', (e) => {
+        const center = e.target.getCenter(), zoom = e.target.getZoom();
+        history.pushState(null,null,`#${zoom}/${center.lat}/${center.lng}`);      
+      })
+    map.attributionControl.setPrefix(key);
+    return map;
+  })
+
+  const syncOptions = {
+    // noInitialSync: true, // disables initial synchronization of the maps.
+    syncCursor: true
+  }
+
+  maps.forEach(map => {
+    maps.forEach(map2 => {
+      if (map !== map2)
+        map.sync(map2, syncOptions);  
+    });
+  })
+
+</script>
+</body>
+</html>
