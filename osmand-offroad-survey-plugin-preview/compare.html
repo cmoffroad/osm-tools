@@ -32,15 +32,17 @@
       minNativeZoom: 13,
       maxNativeZoom: 13
     }),
-    'komoot': L.tileLayer('https://tile.hosted.thunderforest.com/komoot-2/{z}/{x}/{y}.png'),
+    'openstreetmap': L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png'),
+    'cyclosm': L.tileLayer('https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png'),
+    'cyclemap': L.tileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=6170aad10dfd42a38d4d8c709a536f38'),
     'opentopomap': L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png'),
-    // 'cyclemap': L.tileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=6170aad10dfd42a38d4d8c709a536f38'),
-    'strava': L.tileLayer('https://a.tiles.mapbox.com/styles/v1/strava/ck2gt6oil0c7y1cnvlz1uphnu/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic3RyYXZhIiwiYSI6IlpoeXU2U0UifQ.c7yhlZevNRFCqHYm6G6Cyg'),
+    'komoot': L.tileLayer('https://tile.hosted.thunderforest.com/komoot-2/{z}/{x}/{y}.png'),
+    'mapy.cz': L.tileLayer('https://mapserver.mapy.cz/base-m/{z}-{x}-{y}?sdk=HgUbCgUbGkgqAQkYBxYEHQNHQlJfR1VfQlBZSw%3D%3D'),
+    // 'strava': L.tileLayer('https://a.tiles.mapbox.com/styles/v1/strava/ck2gt6oil0c7y1cnvlz1uphnu/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoic3RyYXZhIiwiYSI6IlpoeXU2U0UifQ.c7yhlZevNRFCqHYm6G6Cyg'),
     // 'alltrails': L.mapboxGL({
     //   style: 'https://api.mapbox.com/styles/v1/alltrails/ck6ihzq4v0e801ipws9d40r9m?optimize=false&access_token=pk.eyJ1IjoibWFza290YSIsImEiOiJjaXp0bmI3M3EwMDBvMndzMHJudnlsMDllIn0.jV7rTNmfiqjx57usCu54rQ'
     // })
-    'mapy.cz': L.tileLayer('https://mapserver.mapy.cz/base-m/{z}-{x}-{y}?sdk=HgUbCgUbGkgqAQkYBxYEHQNHQlJfR1VfQlBZSw%3D%3D'),
-    'maps.me': L.mapboxGL({ style: 'https://tiles.maps.me/styles/mapsme_style.json' })
+    // 'maps.me': L.mapboxGL({ style: 'https://tiles.maps.me/styles/mapsme_style.json' })
   };  
 
   const maps = Object.keys(baseLayers).map((key, index) => {
