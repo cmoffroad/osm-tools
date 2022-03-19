@@ -1,0 +1,115 @@
+<head>
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>             -->
+</head>
+<body>
+<style>
+</style>
+<table id="table" class="highlight striped">
+  <thead>
+    <th width="300">Rendering</th>
+    <th>Tags</th>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<script>
+
+  function parseConfig(string, symmetrical) {
+    let rows = string.split('|');
+    if (symmetrical)
+      rows = [...rows, ...rows.slice(0,-1).reverse()];
+
+    return rows.map(row => {
+      const cells = row.split(':');
+      return {
+        width: parseInt(cells[0]) || 1, 
+        stroke: cells[1] || 'transparent', 
+        dasharray: cells[2] || 'none', 
+        fill: cells[3] || 'transparent'
+      }
+    })
+  }
+
+  function svg(configs) {
+    let elements = [], height = 0;
+
+    configs.forEach(({width, stroke, dasharray, fill}) => {
+      let y = height + (width / 2);
+      if (fill) {
+        elements.push(`<line x1="0" y1="${y}" x2="100%" y2="${y}" style="stroke:${fill};stroke-width:${width}" />`);
+      }
+      elements.push(`<line x1="0" y1="${y}" x2="100%" y2="${y}" style="stroke:${stroke};stroke-width:${width};stroke-dasharray:${dasharray}" />`);
+
+      height += width;
+    });
+
+    var svg = `<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">${elements.join('')}</svg>`;
+
+    var url = svg
+      .replace(/\"/g, '&quot;')
+      .replace(/\%/g, '%25')
+      .replace(/\</g, '%3c')
+      .replace(/\>/g, '%3E');
+
+    console.log(url);
+
+    return `<img width="100%" height="${height}" src="data:image/svg+xml,${url}" />`
+
+    // return `<div style="width: 100%; height: ${10}px; background-image: url('data:image/svg+xml,${url}')"></div>`;
+  }
+
+  function add(tags, config) {
+    var lines = parseConfig(config || '', true);
+
+    var rendering = document.createElement('td')
+    rendering.innerHTML = svg(lines);
+    var description = document.createElement('td');
+    description.innerHTML = `<code>${tags || ''}</code>`;
+    var tr = document.createElement('tr');
+    tr.appendChild(rendering);
+    tr.appendChild(description);
+    document.querySelector('tbody').appendChild(tr);
+  }
+  /* tracktype */
+  add('tracktype=grade1', '2:black:|6');
+  add('tracktype=grade2', '2:black:16,8|6');
+  add('tracktype=grade3', '2:black:8,4|6');
+  add('tracktype=grade4', '2:black:4,2|6');
+  add('tracktype=grade5', '2:black:2,1|6');
+  add('', '10');
+
+
+  add('tracktype=grade1', '2:black:|6');
+  add('tracktype=grade2', '2:black:20,2|6');
+  add('tracktype=grade3', '2:black:10,4|6');
+  add('tracktype=grade4', '2:black:5,8|6');
+  add('tracktype=grade5', '2:black:2,16|6');
+  add('', '10');
+
+  // add('tracktype=grade4');
+  // add('tracktype=grade5');
+  
+  // /* smoothness */
+  add('smoothness=excellent|good', '2:black|6:white');
+  add('smoothness=intermediate|bad', '6:black:20,2');
+  add('smoothness=very_bad|horrible', '6:black:10,4');
+  add('smoothness=very_horrible', '6:black:5,8');
+  add('smoothness=impassable', '6:black:2,16');
+  add('', '10');
+
+  // /* surface */
+  add('surface~paved','2:black:|6:white');
+  add('surface~unpaved', '6:black');
+
+  add('', '10');
+
+
+  add('highway=unclassified + surface=paved + smoothness=excellent|good + tracktype=grade1', '2:black|6:white');
+  add('highway=unclassified + surface=paved + smoothness=intermediate|bad + tracktype=grade1', '2:black|6:white:20,2:black');
+  add('highway=unclassified + surface=unpaved + smoothness=intermediate|bad + tracktype=grade2', '2:grey:6,2|6:black:20,2');
+
+
+
+</script>
+</body>
