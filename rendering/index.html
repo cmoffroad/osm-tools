@@ -5,65 +5,115 @@
 <script src="./index.js"></script>
 </head>
 <body>
-<h2>Unpaved Roads Rendering Proposal</h2>
+<h2>Roads General Rendering</h2>
 <table id="table" class="highlight striped">
   <tr>
     <th>Categories</th>
     <th>(1) Normal roads</th>
     <th>(2) Drive with care</th>
     <th>(3) 4WD only</th>
-    <th>(4) Off-road only</th>
-    <th>(5) Impassable</th>
+    <th>(4) Impassable</th>
+    <!-- <th>(5) Impassable</th> -->
   </tr>
   <tr>
     <td>Description</td>
     <td>Great/good paved roads.<br>All vehicles.</td>
-    <td>Rough paved roads<br>Great/good unpaved roads.<br>All vehicles.</td>
-    <td>Rough unpaved roads.<br>High clearance required.</td>
-    <td>Impassable for 4WD.<br/> Specialized off-road vehicles.<br>ATV, tractor, MTB, enduro...</td>
-    <td>Impassable for any wheels.<br/>On foot only.</td>
+    <td>Rough paved roads.<br>Great/good unpaved roads.</td>
+    <td>Rough unpaved roads.<br>High clearance or 4WD capable.</td>
+    <td>Specialized vehicles only.<br>Abandoned/Disused.<br>Restricted access.</td>
+<!--     <td>Impassable for any wheels.<br>Abandoned/Disused. -->
   </tr>
   <tr>
-    <td colspan="6">Tags priority</td>
+    <td>Tags priority</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <!-- <td></td> -->
+  </tr>
+  <tr>
+    <td><a href="https://wiki.openstreetmap.org/wiki/Key:construction" target="_blank"><code>construction</code></a></td>
+    <td><code>-</code></td>
+    <td><code>-</code></td>
+    <td><code>-</code></td>
+    <td><code>highway=construction + construction=*</code></td>
+  </tr>
+  <tr>
+    <td><a href="https://wiki.openstreetmap.org/wiki/Key:abandoned" target="_blank"><code>abandoned</code></a></td>
+    <td><code>-</code></td>
+    <td><code>-</code></td>
+    <td><code>-</code></td>
+    <td><code>abandoned:highway=*</code></td>
+  </tr>
+  <tr>
+    <td><a href="https://wiki.openstreetmap.org/wiki/Key:disused" target="_blank"><code>disused</code></a></td>
+    <td><code>-</code></td>
+    <td><code>-</code></td>
+    <td><code>-</code></td>
+    <td><code>disused:highway=*</code></td>
+  </tr>
+  <tr>
+    <td><a href="https://wiki.openstreetmap.org/wiki/Key:obstacle" target="_blank"><code>obstacle</code></a></td>
+    <td><code>-</code></td>
+    <td><code>-</code></td>
+    <td><code>-</code></td>
+    <td><code>yes, vegetation, fallen_tree, heap, hole</code></td>
+  </tr>
+  <tr>
+    <td><a href="https://wiki.openstreetmap.org/wiki/Key:motor_vehicle" target="_blank"><code>motor_vehicle</code></a></td>
+    <td><code>-</code></td>
+    <td><code>-</code></td>
+    <td><code>-</code></td>
+    <td><code>no</code></td>
+  </tr>
+  <tr>
+    <td><a href="https://wiki.openstreetmap.org/wiki/Key:motorcar" target="_blank"><code>motorcar</code></a></td>
+    <td><code>-</code></td>
+    <td><code>-</code></td>
+    <td><code>-</code></td>
+    <td><code>no</code></td>
+  </tr>
+  <tr>
+    <td><a href="https://wiki.openstreetmap.org/wiki/Key:4wd_only" target="_blank"><code>4wd_only</code></a></td>
+    <td><code>-</code></td>
+    <td><code>-</code></td>
+    <td><code>yes</code></td>
+    <td><code>-</code></td>
   </tr>
   <tr>
     <td><a href="https://wiki.openstreetmap.org/wiki/Key:smoothness" target="_blank"><code>smoothness</code></a></td>
     <td><code>excellent, good</code></td>
     <td><code>intermediate, bad</code></td>
     <td><code>very_bad, horrible</code></td>
-    <td><code>very_horrible</code></td>
-    <td><code>impassable</code></td>
-  </tr>
-  <tr>
-    <td><a href="https://wiki.openstreetmap.org/wiki/Key:surface" target="_blank"><code>tracktype</code></a></td>
-    <td><code>grade1</code></td>
-    <td><code>grade2, grade3</code></td>
-    <td><code>grade4, grade5</code></td>
-    <td><code>n/a</code></td>
-    <td><code>n/a</code></td>
+    <td><code>very_horrible, impassable</code></td>
+    <!-- <td><code>impassable</code></td> -->
   </tr>
   <tr>
     <td><a href="https://wiki.openstreetmap.org/wiki/Key:surface" target="_blank"><code>surface</code></a></td>
     <td><code>paved, chipseal, asphalt, concrete</code></td>
     <td><code>unpaved, concrete:plates, concrete:lanes, compacted, fine_gravel,  paving_stones, sett, unhewn_cobblestone, cobblestone, metal, wood, grass_paver, woodchips</code></td>
     <td><code>rock, pebblestone, ground, dirt, earth, grass, mud, sand</code></td>
-    <td><code>n/a</code></td>
-    <td><code>n/a</code></td>
+    <td><code>-</code></td>
+    <!-- <td><code>-</code></td> -->
+  </tr>
+  <tr>
+    <td><a href="https://wiki.openstreetmap.org/wiki/Key:surface" target="_blank"><code>tracktype</code></a></td>
+    <td><code>grade1</code></td>
+    <td><code>grade2, grade3</code></td>
+    <td><code>grade4, grade5</code></td>
+    <td><code>-</code></td>
+    <!-- <td><code>-</code></td> -->
   </tr>
   <tr>
     <td><code>no tags fallback</code></td>
     <td><code>highway=*</code></td>
     <td><code>highway=track</code></td>
-    <td><code>n/a</code></td>
-    <td><code>n/a</code></td>
-    <td><code>n/a</code></td>
+    <td><code>-</code></td>
+    <td><code>highway=pedestrian, highway=raceway</code></td>
+    <!-- <td><code>-</code></td> -->
   </tr>
 </table>
 <script>
-
-  // source: https://gist.github.com/kawanet/a880c83f06d6baf742e45ac9ac52af96
-
-  console.debug(`PALETTE: ${Object.keys(PALETTE)}`);
 
   function getColor(string) {
     if (!string) 
@@ -127,8 +177,8 @@
 
   function add(description, configs, opacity) {
     var tr = document.createElement('tr');
-    const tag = configs && configs.length > 0 ? 'code' : 'b';
-    tr.appendChild(createCell(`<${tag}>${description || '&nbsp;'}</${tag}>`))
+    const tag = configs && configs.length > 0 ? 'code' : 'h4';
+    tr.appendChild(createCell(configs ? createLink(description) : `<h4>${description}</h4>`))
     
     if (configs) {
       configs.forEach(config => {
@@ -139,11 +189,23 @@
     document.querySelector('table').appendChild(tr);
   }
 
+  function createLink(tag) {
+    let href = 'https://wiki.openstreetmap.org/wiki/';
+    if (tag.indexOf('=') !== -1)
+      href += `Tag:${tag}`;
+    else
+      href += `Key:${tag}`;
+
+    return `<a href="${href}" target="_blank"><code>${tag}</code></a>`;
+  }
+
   const 
     white = 'white',
-    footway = 'red', 
-    cycleway = 'blue', 
+    // footway = 'red', 
+    // cycleway = 'blue', 
     service = 'grey',
+    pedestrian = 'white',
+    living_street = 'white'
     residential = 'white',
     unclassified = 'white',
     tertiary = 'yellow',
@@ -155,37 +217,37 @@
   // const dash = [ '', '20,2', '10,4', '5,8', '2,16'];
   const styles = [
     { title: '(A) default style', fill: 'black', stroke: 'black', opacity: 1 },
-    { title: '(B) dash only style', fill: '', stroke: 'black', opacity: 1 },
+    { title: '(B) dash only style', fill: 'transparent', stroke: 'black', opacity: 1 },
     // { title: 'access private/no', fill: '', stroke: 'black', opacity: 0.5 },
     // { title: 'unconfirmed', fill: '', stroke: '#fa00ff', opacity: 1 },
   ];
-  const dashes = [ '', '20,4', '10,8' , '4,4', '2,2'];
+  const dashes = [ '', '20,4', '10,8' , '4,4'];
 
   styles.forEach(({title, fill, stroke, opacity}) => {
-    add();
     add(title);
     // add('highway=footway', dashes.slice(0,3).map(d => `1:${footway}:${d}`), opacity);
     // add('highway=cycleway', dashes.slice(0,3).map(d => `1:${cycleway}:${d}`), opacity);
     // add('highway=path', dashes.map(d => `1:${stroke}:${d}`), opacity);
     add('highway=track', dashes.map(d => `3:${stroke}:${d}`), opacity);
-    add('highway=service', dashes.slice(0,3).map(d => `1:${stroke}:${d}:${fill}|2:${service}:${d}:${fill}`), opacity);
-    add('highway=residential', dashes.slice(0,3).map(d => `1:${stroke}:${d}:${fill}|2:${residential}:${d}:${fill}`), opacity);
-    add('highway=unclassified', dashes.slice(0,3).map(d => `1:${stroke}:${d}:${fill}|5:${unclassified}:${d}:${fill}`), opacity);
-    add('highway=tertiary', dashes.slice(0,3).map(d => `2:${stroke}:${d}:${fill}|5:${tertiary}:${d}:${fill}`), opacity);
-    add('highway=tertiary_link', dashes.slice(0,3).map(d => `1:${stroke}:${d}:${fill}|3:${tertiary}:${d}:${fill}`), opacity);
-    add('highway=secondary', dashes.slice(0,3).map(d => `2:${stroke}:${d}:${fill}|5:${secondary}:${d}:${fill}`), opacity);
-    add('highway=secondary_link', dashes.slice(0,3).map(d => `1:${stroke}:${d}:${fill}|3:${secondary}:${d}:${fill}`), opacity);
-    add('highway=primary', dashes.slice(0,3).map(d => `2:${stroke}:${d}:${fill}|5:${primary}:${d}:${fill}`), opacity);
-    add('highway=primary_link', dashes.slice(0,3).map(d => `1:${stroke}:${d}:${fill}|3:${primary}:${d}:${fill}`), opacity);
-    add('highway=trunk', dashes.slice(0,3).map(d => `2:${stroke}:${d}:${fill}|5:${trunk}:${d}:${fill}`), opacity);
-    add('highway=trunk_link', dashes.slice(0,3).map(d => `1:${stroke}:${d}:${fill}|3:${trunk}:${d}:${fill}`), opacity);
+    // add('highway=service', dashes.map(d => `3:${service}:${d}`), opacity);
+    add('highway=service', dashes.slice(0,5).map(d => `1:${stroke}:${d}:${fill}|2:${service}:${d}:${fill}`), opacity);
+    add('highway=pedestrian', dashes.slice(0,5).map(d => `1:${stroke}:${d}:${fill}|2:${pedestrian}:${d}:${fill}`), opacity);
+    add('highway=living_street', dashes.slice(0,5).map(d => `1:${stroke}:${d}:${fill}|2:${living_street}:${d}:${fill}`), opacity);
+    add('highway=residential', dashes.slice(0,5).map(d => `1:${stroke}:${d}:${fill}|2:${residential}:${d}:${fill}`), opacity);
+    add('highway=unclassified', dashes.slice(0,5).map(d => `1:${stroke}:${d}:${fill}|5:${unclassified}:${d}:${fill}`), opacity);
+    add('highway=tertiary', dashes.slice(0,5).map(d => `2:${stroke}:${d}:${fill}|5:${tertiary}:${d}:${fill}`), opacity);
+    add('highway=tertiary_link', dashes.slice(0,5).map(d => `1:${stroke}:${d}:${fill}|3:${tertiary}:${d}:${fill}`), opacity);
+    add('highway=secondary', dashes.slice(0,5).map(d => `2:${stroke}:${d}:${fill}|5:${secondary}:${d}:${fill}`), opacity);
+    add('highway=secondary_link', dashes.slice(0,5).map(d => `1:${stroke}:${d}:${fill}|3:${secondary}:${d}:${fill}`), opacity);
+    add('highway=primary', dashes.slice(0,5).map(d => `2:${stroke}:${d}:${fill}|5:${primary}:${d}:${fill}`), opacity);
+    add('highway=primary_link', dashes.slice(0,5).map(d => `1:${stroke}:${d}:${fill}|3:${primary}:${d}:${fill}`), opacity);
+    add('highway=trunk', dashes.slice(0,5).map(d => `2:${stroke}:${d}:${fill}|5:${trunk}:${d}:${fill}`), opacity);
+    add('highway=trunk_link', dashes.slice(0,5).map(d => `1:${stroke}:${d}:${fill}|3:${trunk}:${d}:${fill}`), opacity);
 
     // add('highway=trunk', dashes.slice(0,3).map(d => `1:${stroke}:${d}:${fill}|2:${trunk}:${d}:${fill}|1:${stroke}:${d}:${fill}|7:${white}:${d}:${fill}`), opacity);
-    add('highway=motorway', dashes.slice(0,3).map(d => `2:${stroke}:${d}:${fill}|5:${motorway}:${d}:${fill}`), opacity);
+    add('highway=motorway', dashes.slice(0,5).map(d => `2:${stroke}:${d}:${fill}|5:${motorway}:${d}:${fill}`), opacity);
     // add('highway=motorway', dashes.slice(0,3).map(d => `1:${stroke}:${d}:${fill}|2:${motorway}:${d}:${fill}|1:${stroke}:${d}:${fill}|7:${white}:${d}:${fill}`), opacity);
-    add('highway=motorway_link', dashes.slice(0,3).map(d => `1:${stroke}:${d}:${fill}|3:${motorway}:${d}:${fill}`), opacity);
-
-    add();  
+    add('highway=motorway_link', dashes.slice(0,5).map(d => `1:${stroke}:${d}:${fill}|3:${motorway}:${d}:${fill}`), opacity);
   });
 
 </script>

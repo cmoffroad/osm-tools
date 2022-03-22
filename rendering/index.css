@@ -1,11 +1,21 @@
-  body { 
-    background: #f8f9fa;
-    font-family: sans-serif;
-  }
-  th { 
-    text-align: left; 
-    width: 16.66%; 
-  }
-  td { 
-    vertical-align: top; 
-  }
+body { 
+  background: #f8f9fa;
+  font-family: sans-serif;
+}
+table {
+  border-spacing: 0;
+}
+tr:nth-child(odd) {
+  /*background: #f8f9fa;*/
+}
+th { 
+  text-align: left;
+  border-right:  1px solid black; 
+  width: 16.66%; 
+  padding: 10px 5px;
+}
+td { 
+  vertical-align: top; 
+  border-right: 1px solid black;
+  padding: 2px 5px;
+}
