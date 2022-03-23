@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<!-- <link rel="stylesheet" href="./index.css"> -->
+<style>
+  html, body, textarea {
+    height: 100%;
+    width:  100%;
+    margin: 0;
+    padding: 0;
+  }
+</style>
+</head>
+<body>
+<textarea></textarea>
+<script src="./palette.js"></script>
+<script src="./config.js"></script>
+<script>
+
+let declarations = [];
+
+const linecap = (dash) =>
+  dash && dash.length ? 'butt' : 'none';
+
+const dasharray = (dash) => 
+  dash && dash.length ? dash : 'none';
+
+const line = (group, tag) => 
+  `.data-layer.osm .layer-osm.lines .linegroup.line-${group} path.tag-highway.${tag}`;
+
+const declaration = (groups, tags, attributes) => {
+  let lines = [];
+  tags.forEach(tag => {
+    groups.forEach(group => {
+      lines.push(line(group, tag));
+    });
+  });
+  if (lines.length) {
+    const comment = `/* tags: ${tags.join(', ')} + groups: ${groups.join(', ')} */`;
+    const values = Object.entries(attributes).map(([key, value]) => `  ${key}: ${value};`);
+    return [ comment, lines.join(',\n') + ' {', ...values, '}' ].join('\n');
+  }
+}
+
+Object.entries(ROADS).forEach(([highway, cfg]) => {
+  const { color, dash, casing, stroke, fill } = cfg;
+  declarations.push(declaration(
+    [ 'casing', 'casing-highlighted' ],
+    [ `tag-highway-${highway}` ],
+    { 
+      stroke: fill || 'black',
+      'stroke-width': casing*2 + stroke,
+      'stroke-dasharray': dasharray(dash),
+      'stroke-linecap': linecap(dash)
+    }
+  ));
+
+  declarations.push(declaration(
+    [ 'stroke', 'stroke-highlighted' ],
+    [ `tag-highway-${highway}` ],
+    { 
+      stroke: lookupPaletteColor(color, 400),
+      'stroke-width': stroke,
+      'stroke-dasharray': dasharray(dash),
+      'stroke-linecap': linecap(dash)
+    }
+  ));
+});
+
+Object.values(CATEGORIES).forEach(({ dash, tracktypes, surfaces }) => {
+  declarations.push(declaration(
+    ['stroke', 'stroke-highlighted'], 
+    tracktypes.map(v => `tag-tracktype-${v}`),
+    {
+      'stroke-dasharray': dasharray(dash),
+      'stroke-linecap': linecap(dash)
+    }
+  ));
+
+  declarations.push(declaration(
+    ['stroke', 'stroke-highlighted'], 
+    surfaces.map(v => `tag-surface-${v.replace(/\:/g, '-')}`),
+    {
+      'stroke-dasharray': dasharray(dash),
+      'stroke-linecap': linecap(dash)
+    }
+  ));
+});
+
+const css = declarations.filter(d => !!d).join('\n\n');
+
+document.querySelector('textarea').value = css;
+
+navigator.clipboard.writeText(css);
+</script>
+</body>
+</html>
