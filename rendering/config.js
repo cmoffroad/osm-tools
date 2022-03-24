@@ -15,7 +15,7 @@ const CATEGORIES = {
     surfaces: [ 'rock', 'pebblestone', 'ground', 'dirt', 'earth', 'grass', 'mud', 'sand' ]
   },
   impassable: { 
-    dash: [4, 4,],
+    dash: [4, 4],
     tracktypes: [],
     surfaces: []
   }

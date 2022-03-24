@@ -1,5 +1,5 @@
-function parseConfig(string, symmetrical) {
-  let rows = string.split('|');
+function parseConfig(lines, symmetrical) {
+  let rows = lines;
   if (symmetrical)
     rows = [...rows, ...rows.slice(0,-1).reverse()];
 
@@ -7,9 +7,9 @@ function parseConfig(string, symmetrical) {
     const cells = row.split(':');
     return {
       width: parseInt(cells[0]) || 0, 
-      stroke: lookupPaletteColor(cells[1]), 
+      stroke: cells[1], 
       dasharray: cells[2] || 'none', 
-      fill: lookupPaletteColor(cells[3])
+      fill: cells[3]
     }
   })
 }
@@ -49,7 +49,7 @@ function createTableCell(content) {
   return cell;
 }
 
-function appendTableRow(selector, description, configs, opacity) {
+function appendTableRow(selector, description, opacity, configs) {
   var tr = document.createElement('tr');
   const tag = configs && configs.length > 0 ? 'code' : 'h4';
   tr.appendChild(createTableCell(configs ? createWikiLink(description) : `<h4>${description}</h4>`))
@@ -73,17 +73,55 @@ function createWikiLink(tag) {
   return `<a href="${href}" target="_blank"><code>${tag}</code></a>`;
 }
 
-const styles = [
-  { title: '(A) default style', fill: 'black', stroke: 'black', opacity: 1 },
-  { title: '(B) dash only style', fill: 'transparent', stroke: 'black', opacity: 1 },
-  // { title: 'access private/no', fill: '', stroke: 'black', opacity: 0.5 },
-  // { title: 'unconfirmed', fill: '', stroke: '#fa00ff', opacity: 1 },
-];
-
-styles.forEach(({title, fill, stroke, opacity}) => {
-  appendTableRow('table', title);
-
-  Object.entries(ROADS).forEach(([tag, road]) => {
-    appendTableRow('table', `highway=${tag}`, Object.values(CATEGORIES).map(({ dash }) => `${road.casing}:${stroke}:${dash}:${road.fill || fill}|${road.stroke}:${road.color}:${dash}:${road.fill || fill}`), opacity);
-  })
+appendTableRow('table', '(A) Default style');
+Object.entries(ROADS).forEach(([tag, road]) => {
+  appendTableRow('table', `highway=${tag}`, 1,  
+    Object.values(CATEGORIES).map(({ dash }) => [
+      `${road.casing}:black:${dash}:${road.fill || 'black'}`,
+      `${road.stroke}:${lookupPaletteColor(road.color, 400)}:${dash}:${road.fill || 'black'}`
+    ])
+  );
 });
+
+const restricted = lookupPaletteColor('red', 600);
+
+appendTableRow('table', '(A.1) Restricted Access (red)');
+Object.entries(ROADS).forEach(([tag, road]) => {
+  appendTableRow('table', `highway=${tag}`, 1,  
+    Object.values(CATEGORIES).map(({ dash }) => [
+      `${road.casing}:${restricted}:${dash}:${road.fill || restricted}`,
+      `${road.stroke}:${road.fill ? restricted : lookupPaletteColor(road.color, 400)}:${dash}:${road.fill || 'black'}`
+    ])
+  );
+});
+
+appendTableRow('table', '(B) Transparent Dash style');
+Object.entries(ROADS).forEach(([tag, road]) => {
+  appendTableRow('table', `highway=${tag}`, 1,  
+    Object.values(CATEGORIES).map(({ dash }) => [
+      `${road.casing}:black:${dash}:${road.fill}`,
+      `${road.stroke}:${road.color}:${dash}:${road.fill}`
+    ])
+  );
+});
+
+appendTableRow('table', '(C) Dashed casing only');
+Object.entries(ROADS).forEach(([tag, road]) => {
+  appendTableRow('table', `highway=${tag}`, 1,  
+    Object.values(CATEGORIES).map(({ dash }) => [
+      `${road.casing}:black:${dash}:${road.fill || 'grey'}`,
+      `${road.stroke}:${road.color}:${road.fill ? dash : ''}`
+    ])
+  );
+});
+
+// appendTableRow('table', '(D) Stroke Tickness');
+// Object.entries(ROADS).forEach(([tag, road]) => {
+//   appendTableRow('table', `highway=${tag}`, 1,  
+//     Object.values(CATEGORIES).map(({ dash }, index) => [
+//       `${road.casing}:black`,
+//       `${road.stroke-index/2}:${road.color}`,
+//       `${index/2}:black`
+//     ])
+//   );
+// });
