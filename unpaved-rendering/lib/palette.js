@@ -302,3 +302,7 @@ function lookupPaletteColor(string, weight) {
   else
     return string;
 }
+
+module.exports = {
+  lookupPaletteColor
+}

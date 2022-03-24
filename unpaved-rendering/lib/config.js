@@ -1,4 +1,4 @@
-const CATEGORIES = {
+const categories = {
   normal:     { 
     dash: [],
     tracktypes: [ 'grade1' ],
@@ -21,14 +21,14 @@ const CATEGORIES = {
   }
 };
 
-const SIZES = {
+const sizes = {
   track:  { casing: 0, stroke: 3 },
   small:  { casing: 1, stroke: 2 },
   medium: { casing: 1, stroke: 5 },
   large:  { casing: 2, stroke: 5 }
 };
 
-const COLORS = {
+const colors = {
   track: 'black',
   service: 'grey',
   residential: 'white',
@@ -39,73 +39,78 @@ const COLORS = {
   motorway: 'indigo'
 };
 
-const ROADS = {
+const roads = {
   track: {
-    color: COLORS.track,
+    color: colors.track,
     fill: 'none',
-    ...SIZES.track,
-    ...CATEGORIES.caution
+    ...sizes.track,
+    ...categories.caution
   },
   service: {
-    color: COLORS.service,
-    ...SIZES.small,
+    color: colors.service,
+    ...sizes.small,
   },
   pedestrian: {
-    color: COLORS.residential,
-    ...SIZES.small,
-    ...CATEGORIES.impassable
+    color: colors.residential,
+    ...sizes.small,
+    ...categories.impassable
   },
   living_street:  {
-    color: COLORS.residential,
-    ...SIZES.small,
-    ...CATEGORIES.impassable
+    color: colors.residential,
+    ...sizes.small,
+    ...categories.impassable
   },
   residential: {
-    color: COLORS.residential,
-    ...SIZES.small,
+    color: colors.residential,
+    ...sizes.small,
   },
   unclassified: {
-    color: COLORS.residential,
-    ...SIZES.medium,
+    color: colors.residential,
+    ...sizes.medium,
   },
   tertiary_link: {
-    color: COLORS.tertiary,
-    ...SIZES.small
+    color: colors.tertiary,
+    ...sizes.small
   },
   tertiary: {
-    color: COLORS.tertiary,
-    ...SIZES.large,
+    color: colors.tertiary,
+    ...sizes.large,
   },
   secondary_link: {
-    color: COLORS.secondary,
-    ...SIZES.small
+    color: colors.secondary,
+    ...sizes.small
   },
   secondary: {
-    color: COLORS.secondary,
-    ...SIZES.large
+    color: colors.secondary,
+    ...sizes.large
   },
   primary_link: {
-    color: COLORS.primary,
-    ...SIZES.small
+    color: colors.primary,
+    ...sizes.small
   },
   primary: {
-    color: COLORS.primary,
-    ...SIZES.large,
+    color: colors.primary,
+    ...sizes.large,
   },
   trunk_link: {
-    color: COLORS.trunk,
-    ...SIZES.small,
+    color: colors.trunk,
+    ...sizes.small,
   },
   trunk: {
-    color: COLORS.trunk,
-    ...SIZES.large,
+    color: colors.trunk,
+    ...sizes.large,
   },
   motorway_link: {
-    color: COLORS.motorway,
-    ...SIZES.small,
+    color: colors.motorway,
+    ...sizes.small,
   },
   motorway: {
-    color: COLORS.motorway,
-    ...SIZES.large,
+    color: colors.motorway,
+    ...sizes.large,
   },
+}
+
+module.exports = {
+  categories,
+  roads
 }

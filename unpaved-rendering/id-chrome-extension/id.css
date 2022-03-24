@@ -1,0 +1,377 @@
+/* tags: tag-highway-track + groups: casing, casing-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-highway-track,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-highway-track {
+  stroke: none;
+  stroke-width: 3;
+  stroke-dasharray: 20,4;
+  stroke-linecap: butt;
+}
+
+/* tags: tag-highway-track + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-highway-track,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-highway-track {
+  stroke: black;
+  stroke-width: 3;
+  stroke-dasharray: 20,4;
+  stroke-linecap: butt;
+}
+
+/* tags: tag-highway-service + groups: casing, casing-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-highway-service,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-highway-service {
+  stroke: black;
+  stroke-width: 4;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-service + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-highway-service,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-highway-service {
+  stroke: #bdbdbd;
+  stroke-width: 2;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-pedestrian + groups: casing, casing-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-highway-pedestrian,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-highway-pedestrian {
+  stroke: black;
+  stroke-width: 4;
+  stroke-dasharray: 4,4;
+  stroke-linecap: butt;
+}
+
+/* tags: tag-highway-pedestrian + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-highway-pedestrian,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-highway-pedestrian {
+  stroke: white;
+  stroke-width: 2;
+  stroke-dasharray: 4,4;
+  stroke-linecap: butt;
+}
+
+/* tags: tag-highway-living_street + groups: casing, casing-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-highway-living_street,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-highway-living_street {
+  stroke: black;
+  stroke-width: 4;
+  stroke-dasharray: 4,4;
+  stroke-linecap: butt;
+}
+
+/* tags: tag-highway-living_street + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-highway-living_street,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-highway-living_street {
+  stroke: white;
+  stroke-width: 2;
+  stroke-dasharray: 4,4;
+  stroke-linecap: butt;
+}
+
+/* tags: tag-highway-residential + groups: casing, casing-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-highway-residential,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-highway-residential {
+  stroke: black;
+  stroke-width: 4;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-residential + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-highway-residential,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-highway-residential {
+  stroke: white;
+  stroke-width: 2;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-unclassified + groups: casing, casing-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-highway-unclassified,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-highway-unclassified {
+  stroke: black;
+  stroke-width: 7;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-unclassified + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-highway-unclassified,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-highway-unclassified {
+  stroke: white;
+  stroke-width: 5;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-tertiary_link + groups: casing, casing-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-highway-tertiary_link,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-highway-tertiary_link {
+  stroke: black;
+  stroke-width: 4;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-tertiary_link + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-highway-tertiary_link,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-highway-tertiary_link {
+  stroke: #ffee58;
+  stroke-width: 2;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-tertiary + groups: casing, casing-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-highway-tertiary,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-highway-tertiary {
+  stroke: black;
+  stroke-width: 9;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-tertiary + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-highway-tertiary,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-highway-tertiary {
+  stroke: #ffee58;
+  stroke-width: 5;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-secondary_link + groups: casing, casing-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-highway-secondary_link,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-highway-secondary_link {
+  stroke: black;
+  stroke-width: 4;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-secondary_link + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-highway-secondary_link,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-highway-secondary_link {
+  stroke: #ffa726;
+  stroke-width: 2;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-secondary + groups: casing, casing-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-highway-secondary,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-highway-secondary {
+  stroke: black;
+  stroke-width: 9;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-secondary + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-highway-secondary,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-highway-secondary {
+  stroke: #ffa726;
+  stroke-width: 5;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-primary_link + groups: casing, casing-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-highway-primary_link,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-highway-primary_link {
+  stroke: black;
+  stroke-width: 4;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-primary_link + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-highway-primary_link,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-highway-primary_link {
+  stroke: #ef5350;
+  stroke-width: 2;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-primary + groups: casing, casing-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-highway-primary,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-highway-primary {
+  stroke: black;
+  stroke-width: 9;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-primary + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-highway-primary,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-highway-primary {
+  stroke: #ef5350;
+  stroke-width: 5;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-trunk_link + groups: casing, casing-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-highway-trunk_link,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-highway-trunk_link {
+  stroke: black;
+  stroke-width: 4;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-trunk_link + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-highway-trunk_link,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-highway-trunk_link {
+  stroke: #ab47bc;
+  stroke-width: 2;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-trunk + groups: casing, casing-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-highway-trunk,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-highway-trunk {
+  stroke: black;
+  stroke-width: 9;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-trunk + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-highway-trunk,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-highway-trunk {
+  stroke: #ab47bc;
+  stroke-width: 5;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-motorway_link + groups: casing, casing-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-highway-motorway_link,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-highway-motorway_link {
+  stroke: black;
+  stroke-width: 4;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-motorway_link + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-highway-motorway_link,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-highway-motorway_link {
+  stroke: #5c6bc0;
+  stroke-width: 2;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-motorway + groups: casing, casing-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-highway-motorway,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-highway-motorway {
+  stroke: black;
+  stroke-width: 9;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-highway-motorway + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-highway-motorway,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-highway-motorway {
+  stroke: #5c6bc0;
+  stroke-width: 5;
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-tracktype-grade1 + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-tracktype-grade1,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-tracktype-grade1 {
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-surface-paved, tag-surface-chipseal, tag-surface-asphalt, tag-surface-concrete + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-paved,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-paved,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-chipseal,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-chipseal,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-asphalt,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-asphalt,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-concrete,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-concrete {
+  stroke-dasharray: none;
+  stroke-linecap: none;
+}
+
+/* tags: tag-tracktype-grade2, tag-tracktype-grade3 + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-tracktype-grade2,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-tracktype-grade2,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-tracktype-grade3,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-tracktype-grade3 {
+  stroke-dasharray: 20,4;
+  stroke-linecap: butt;
+}
+
+/* tags: tag-surface-unpaved, tag-surface-concrete-plates, tag-surface-concrete-lanes, tag-surface-compacted, tag-surface-fine_gravel, tag-surface-paving_stones, tag-surface-sett, tag-surface-unhewn_cobblestone, tag-surface-cobblestone, tag-surface-metal, tag-surface-wood, tag-surface-grass_paver, tag-surface-woodchips + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-unpaved,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-unpaved,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-concrete-plates,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-concrete-plates,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-concrete-lanes,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-concrete-lanes,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-compacted,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-compacted,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-fine_gravel,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-fine_gravel,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-paving_stones,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-paving_stones,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-sett,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-sett,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-unhewn_cobblestone,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-unhewn_cobblestone,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-cobblestone,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-cobblestone,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-metal,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-metal,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-wood,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-wood,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-grass_paver,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-grass_paver,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-woodchips,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-woodchips {
+  stroke-dasharray: 20,4;
+  stroke-linecap: butt;
+}
+
+/* tags: tag-tracktype-grade4, tag-tracktype-grade5 + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-tracktype-grade4,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-tracktype-grade4,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-tracktype-grade5,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-tracktype-grade5 {
+  stroke-dasharray: 10,8;
+  stroke-linecap: butt;
+}
+
+/* tags: tag-surface-rock, tag-surface-pebblestone, tag-surface-ground, tag-surface-dirt, tag-surface-earth, tag-surface-grass, tag-surface-mud, tag-surface-sand + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-rock,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-rock,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-pebblestone,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-pebblestone,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-ground,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-ground,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-dirt,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-dirt,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-earth,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-earth,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-grass,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-grass,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-mud,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-mud,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-sand,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-sand {
+  stroke-dasharray: 10,8;
+  stroke-linecap: butt;
+}

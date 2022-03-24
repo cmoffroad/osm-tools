@@ -1,21 +1,8 @@
-<!doctype html>
-<html>
-<head>
-<!-- <link rel="stylesheet" href="./index.css"> -->
-<style>
-  html, body, textarea {
-    height: 100%;
-    width:  100%;
-    margin: 0;
-    padding: 0;
-  }
-</style>
-</head>
-<body>
-<textarea></textarea>
-<script src="./palette.js"></script>
-<script src="./config.js"></script>
-<script>
+const fs = require('fs');
+const path = require('path');
+
+const { categories, roads } = require('../lib/config');
+const { lookupPaletteColor } = require('../lib/palette');
 
 let declarations = [];
 
@@ -42,7 +29,7 @@ const declaration = (groups, tags, attributes) => {
   }
 }
 
-Object.entries(ROADS).forEach(([highway, cfg]) => {
+Object.entries(roads).forEach(([highway, cfg]) => {
   const { color, dash, casing, stroke, fill } = cfg;
   declarations.push(declaration(
     [ 'casing', 'casing-highlighted' ],
@@ -67,7 +54,7 @@ Object.entries(ROADS).forEach(([highway, cfg]) => {
   ));
 });
 
-Object.values(CATEGORIES).forEach(({ dash, tracktypes, surfaces }) => {
+Object.values(categories).forEach(({ dash, tracktypes, surfaces }) => {
   declarations.push(declaration(
     ['stroke', 'stroke-highlighted'], 
     tracktypes.map(v => `tag-tracktype-${v}`),
@@ -89,9 +76,4 @@ Object.values(CATEGORIES).forEach(({ dash, tracktypes, surfaces }) => {
 
 const css = declarations.filter(d => !!d).join('\n\n');
 
-document.querySelector('textarea').value = css;
-
-navigator.clipboard.writeText(css);
-</script>
-</body>
-</html>
+fs.writeFileSync(path.join(__dirname, '..', 'id-chrome-extension', 'id.css'), css);

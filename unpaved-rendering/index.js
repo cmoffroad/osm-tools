@@ -74,9 +74,9 @@ function createWikiLink(tag) {
 }
 
 appendTableRow('table', '(A) Default style');
-Object.entries(ROADS).forEach(([tag, road]) => {
+Object.entries(roads).forEach(([tag, road]) => {
   appendTableRow('table', `highway=${tag}`, 1,  
-    Object.values(CATEGORIES).map(({ dash }) => [
+    Object.values(categories).map(({ dash }) => [
       `${road.casing}:black:${dash}:${road.fill || 'black'}`,
       `${road.stroke}:${lookupPaletteColor(road.color, 400)}:${dash}:${road.fill || 'black'}`
     ])
@@ -86,9 +86,9 @@ Object.entries(ROADS).forEach(([tag, road]) => {
 const restricted = lookupPaletteColor('red', 600);
 
 appendTableRow('table', '(A.1) Restricted Access (red)');
-Object.entries(ROADS).forEach(([tag, road]) => {
+Object.entries(roads).forEach(([tag, road]) => {
   appendTableRow('table', `highway=${tag}`, 1,  
-    Object.values(CATEGORIES).map(({ dash }) => [
+    Object.values(categories).map(({ dash }) => [
       `${road.casing}:${restricted}:${dash}:${road.fill || restricted}`,
       `${road.stroke}:${road.fill ? restricted : lookupPaletteColor(road.color, 400)}:${dash}:${road.fill || 'black'}`
     ])
@@ -96,9 +96,9 @@ Object.entries(ROADS).forEach(([tag, road]) => {
 });
 
 appendTableRow('table', '(B) Transparent Dash style');
-Object.entries(ROADS).forEach(([tag, road]) => {
+Object.entries(roads).forEach(([tag, road]) => {
   appendTableRow('table', `highway=${tag}`, 1,  
-    Object.values(CATEGORIES).map(({ dash }) => [
+    Object.values(categories).map(({ dash }) => [
       `${road.casing}:black:${dash}:${road.fill}`,
       `${road.stroke}:${road.color}:${dash}:${road.fill}`
     ])
@@ -106,9 +106,9 @@ Object.entries(ROADS).forEach(([tag, road]) => {
 });
 
 appendTableRow('table', '(C) Dashed casing only');
-Object.entries(ROADS).forEach(([tag, road]) => {
+Object.entries(roads).forEach(([tag, road]) => {
   appendTableRow('table', `highway=${tag}`, 1,  
-    Object.values(CATEGORIES).map(({ dash }) => [
+    Object.values(categories).map(({ dash }) => [
       `${road.casing}:black:${dash}:${road.fill || 'grey'}`,
       `${road.stroke}:${road.color}:${road.fill ? dash : ''}`
     ])
@@ -116,9 +116,9 @@ Object.entries(ROADS).forEach(([tag, road]) => {
 });
 
 // appendTableRow('table', '(D) Stroke Tickness');
-// Object.entries(ROADS).forEach(([tag, road]) => {
+// Object.entries(roads).forEach(([tag, road]) => {
 //   appendTableRow('table', `highway=${tag}`, 1,  
-//     Object.values(CATEGORIES).map(({ dash }, index) => [
+//     Object.values(categories).map(({ dash }, index) => [
 //       `${road.casing}:black`,
 //       `${road.stroke-index/2}:${road.color}`,
 //       `${index/2}:black`

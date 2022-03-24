@@ -1,0 +1,24 @@
+{
+  "name": "id-unpaved-rendering",
+  "version": "1",
+  "description": "Unpaved Roads Rendering CSS upgrade for OSM iD Editor",
+  "manifest_version": 3,
+  "web_accessible_resources": [ 
+    {
+      "resources": [ "id.css" ],
+      "matches": ["<all_urls>"]
+    } 
+  ],
+  "content_scripts": [
+    {
+      "matches": [ 
+        "https://www.openstreetmap.org/id"
+      ],
+      "all_frames": true,
+      "css" : [ "id.css" ]
+    }
+  ],
+  "host_permissions": [
+    "https://www.openstreetmap.org/"
+  ]
+}
