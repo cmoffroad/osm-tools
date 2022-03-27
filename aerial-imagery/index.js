@@ -1,15 +1,15 @@
 function parseLocationHash (url, deflt) {
   let match;
-  if (url && (match = url.match(/\#map=(\d+)\/(\d+.\d+)\/(\d+.\d+)$/))) {
+  if (url && (match = url.match(/map=(\d+(.\d+)?)\/(\d+(.\d+)?)\/(\d+(.\d+)?)$/))) {
     return { 
-      center: [ parseFloat(match[2]), parseFloat(match[3]) ], 
+      center: [ parseFloat(match[3]), parseFloat(match[5]) ], 
       zoom: parseFloat(match[1]) 
     };
-  } else if (url && (match = url.match(/@(\d+.\d+),(\d+.\d+),(\d+.\d+)z$/))) {
+  } else if (url && (match = url.match(/@(\d+(.\d+)?),(\d+(.\d+)?),(\d+(.\d+)?)z$/))) {
     // https://www.google.com/maps/@11.8014959,99.8001419,16.21z
     return { 
-      center: [ parseFloat(match[1]), parseFloat(match[2]) ], 
-      zoom: parseFloat(match[3]) 
+      center: [ parseFloat(match[1]), parseFloat(match[3]) ], 
+      zoom: parseFloat(match[5]) 
     };
   } else if (deflt) {
     return { zoom: '17', center: [ 11.815238700979776, 99.79828689247371] };
@@ -26,6 +26,7 @@ function updateLocationHash (map) {
 // INIT
 
 const { center, zoom } = parseLocationHash(location.href, true);
+const maxZoom = 24;
 
 // BING MAP
 
@@ -69,13 +70,14 @@ maps.push(
   .addLayer(
     L.esri.tiledMapLayer({
       url: 'https://server.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer',
-      maxNativeZoom: 17
+      maxNativeZoom: 17,
+      maxZoom
       // FIXME
       // url: 'https://clarity.maptiles.arcgis.com/arcgis/rest/services/World_Imagery/MapServer',
       // attribution: 'Esri World Imagery (Clarity) Beta'
     })
   )
-  .on('moveend', (e) => updateLocationHash(e.target))
+  // .on('moveend', (e) => updateLocationHash(e.target))
   .whenReady(e => e.target.attributionControl.setPrefix(false))
 );
 
@@ -85,10 +87,13 @@ maps.push(
   .setView(center, zoom)
   .addLayer(
     L.tileLayer('https://services.digitalglobe.com/earthservice/tmsaccess/tms/1.0.0/DigitalGlobe:ImageryTileService@EPSG:3857@jpg/{z}/{x}/{y}.jpg?connectId=c2cbd3f2-003a-46ec-9e46-26a3996d6484', {
-      tms: true
+      attribution: 'Maxar Premium Imagery',
+      tms: true,
+      maxNativeZoom: 20,
+      maxZoom
     })
   )
-  .on('moveend', (e) => updateLocationHash(e.target))
+  // .on('moveend', (e) => updateLocationHash(e.target))
   .whenReady(e => e.target.attributionControl.setPrefix(false))
 );
 
@@ -99,10 +104,11 @@ maps.push(
   .addLayer(
     L.tileLayer('https://d.tiles.mapbox.com/v4/mapbox.satellite/{z}/{x}/{y}@2x.jpg?access_token={accessToken}', {
       attribution: 'Mapbox Satellite',
-      accessToken: 'pk.eyJ1Ijoib3BlbnN0cmVldG1hcCIsImEiOiJja2w5YWt5bnYwNjZmMnFwZjhtbHk1MnA1In0.eq2aumBK6JuRoIuBMm6Gew'
+      accessToken: 'pk.eyJ1Ijoib3BlbnN0cmVldG1hcCIsImEiOiJja2w5YWt5bnYwNjZmMnFwZjhtbHk1MnA1In0.eq2aumBK6JuRoIuBMm6Gew',
+      maxZoom
     })
   )
-  .on('moveend', (e) => updateLocationHash(e.target))
+  // .on('moveend', (e) => updateLocationHash(e.target))
   .whenReady(e => e.target.attributionControl.setPrefix(false))
 );
 
@@ -130,10 +136,10 @@ L.control.locate({
 const searchURLAndSetMapView = (input, map) => {
   const { value } = input;
   const { center, zoom } = parseLocationHash(value);
-  if (zoom && center)
+  if (zoom && center) {
     map.setView(center, zoom);
-
-  // setTimeout(() => input.value = '', 100);
+    setTimeout(() => input.value = '', 250);
+  }
 }
 
 const provider = new GeoSearch.OpenStreetMapProvider({});
@@ -152,18 +158,24 @@ search.searchElement.input.onkeyup = evt => {
   }
 }
 search.searchElement.input.onpaste = evt => {
-  searchURLAndSetMapView(evt.target, maps[0]);
+  setTimeout(() => {
+    searchURLAndSetMapView(evt.target, maps[0]);
+  }, 250);
 }
 
 // OVERLAYS CONTROL
 const overlays = {
   "Locator Overlay": 
     L.tileLayer('https://api.mapbox.com/styles/v1/openstreetmap/ckasmteyi1tda1ipfis6wqhuq/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib3BlbnN0cmVldG1hcCIsImEiOiJja2w5YWtqbDAwcGFkMnZtdngzbWtlbDE3In0.U3DODCbBGFfFXkilttz1YA', {
+      maxNativeZoom: 22,
+      maxZoom,
       opacity: .5,
       className: 'mapbox-locator'
     }),
   "GPS Traces Overlay": 
     L.tileLayer('https://{s}.gps-tile.openstreetmap.org/lines/{z}/{x}/{y}.png', {
+      maxNativeZoom: 22,
+      maxZoom,
       opacity: 1,
       className: 'gps-traces' 
     })
