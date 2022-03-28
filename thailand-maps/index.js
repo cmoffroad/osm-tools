@@ -20,7 +20,8 @@ const createDRRCLDLayer = (layers) =>
     srs: 'EPSG:3857',
     format: 'image/png',
     transparent: true,
-    attribution: '<a href="http://cld.drr.go.th/gisCldIntegration/index.php">cld.drr.go.th</a>'
+    attribution: '<a href="http://cld.drr.go.th/gisCldIntegration/index.php">cld.drr.go.th</a>',
+    nocache: +new Date()
   });
 
 
