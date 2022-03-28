@@ -1,31 +1,7 @@
-function parseLocationHash (url, deflt) {
-  let match;
-  if (url && (match = url.match(/map=(\d+(.\d+)?)\/(\d+(.\d+)?)\/(\d+(.\d+)?)$/))) {
-    return { 
-      center: [ parseFloat(match[3]), parseFloat(match[5]) ], 
-      zoom: parseFloat(match[1]) 
-    };
-  } else if (url && (match = url.match(/@(\d+(.\d+)?),(\d+(.\d+)?),(\d+(.\d+)?)z$/))) {
-    // https://www.google.com/maps/@11.8014959,99.8001419,16.21z
-    return { 
-      center: [ parseFloat(match[1]), parseFloat(match[3]) ], 
-      zoom: parseFloat(match[5]) 
-    };
-  } else if (deflt) {
-    return { zoom: '17', center: [ 11.815238700979776, 99.79828689247371] };
-  } else {
-    return { };
-  }
-}
-
-function updateLocationHash (map) {
-  const center = map.getCenter(), zoom = map.getZoom();
-  history.pushState(null,null,`#map=${zoom}/${center.lat}/${center.lng}`);  
-}
-
 // INIT
 
-const { center, zoom } = parseLocationHash(location.href, true);
+const fallback = { zoom: '17', center: [ 11.815238700979776, 99.79828689247371] };
+const { center, zoom } = parseLocationHash(location.href, fallback);
 const maxZoom = 24;
 
 // BING MAP
@@ -38,7 +14,11 @@ maps.push(
   new L.Map(`maps${maps.length + 1}`, { zoomControl: true })
   .setView(center, zoom)
   .addLayer(
-    new L.TileLayer.Bing("AuhiCJHlGzhg93IqUH_oCpl_-ZUrIE6SPftlyGYUvr9Amx5nzA-WqGcPquyFZl4L")
+    new L.TileLayer.Bing({
+      bingMapsKey: "AuhiCJHlGzhg93IqUH_oCpl_-ZUrIE6SPftlyGYUvr9Amx5nzA-WqGcPquyFZl4L",
+      maxNativeZoom: 18,
+      maxZoom
+    })
   )
   .on('moveend', (e) => updateLocationHash(e.target))
   .on('moveend', (e) => {
@@ -131,16 +111,14 @@ L.control.locate({
   showCompass: false
 }).addTo(maps[0]);
 
-// SEARCH CONTROL
+// HASH CHANGE
 
-const searchURLAndSetMapView = (input, map) => {
-  const { value } = input;
-  const { center, zoom } = parseLocationHash(value);
-  if (zoom && center) {
-    map.setView(center, zoom);
-    setTimeout(() => input.value = '', 250);
-  }
+window.onhashchange = () => {
+  const { center, zoom } = parseLocationHash(location.href, fallback);
+  maps[0].setView(center, zoom);
 }
+
+// SEARCH CONTROL
 
 const provider = new GeoSearch.OpenStreetMapProvider({});
 const search = new GeoSearch.GeoSearchControl({
