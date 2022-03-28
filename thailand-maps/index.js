@@ -15,7 +15,7 @@ const createGoogleLayer = (layers) =>
 // based on http://cld.drr.go.th/gisCldIntegration/index.php
 const createDRRCLDLayer = (layers) => 
   L.tileLayer.wms(
-    "https://cld.drr.go.th/geoserver/gwc/service/wms", {
+    "http://cld.drr.go.th/geoserver/gwc/service/wms", {
     layers,
     srs: 'EPSG:3857',
     format: 'image/png',
