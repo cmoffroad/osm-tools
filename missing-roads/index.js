@@ -35,6 +35,12 @@ window.onhashchange = () => {
 let invert = false;
 
 const baseLayersMap = {
+  'bing':
+    new L.TileLayer.Bing({
+      bingMapsKey: "AuhiCJHlGzhg93IqUH_oCpl_-ZUrIE6SPftlyGYUvr9Amx5nzA-WqGcPquyFZl4L",
+      maxNativeZoom: 18,
+      maxZoom
+    }),
   'gsat': 
     L.tileLayer('https://mt3.Google.com/vt?z={z}&x={x}&y={y}&lyrs=s', {
       maxNativeZoom: 21,
@@ -66,6 +72,13 @@ const overlaysMap = {
       opacity: 1
     })
     .setZIndex(2),
+  'cld': 
+    L.tileLayer.wms('http://cld.drr.go.th/geoserver/gwc/service/wms?service=WMS&request=GetMap&layers=ProtoPj%3Agis_cld_route_spc&styles=&format=image%2Fpng&transparent=true&version=1.1.1&srs=EPSG%3A3857', {
+      maxNativeZoom: 18,
+      maxZoom,
+      opacity: 0.5,
+      className: invert && 'invert'
+    }).setZIndex(1),
   'l7018': 
     L.tileLayer.wms('http://cld.drr.go.th/geoserver/gwc/service/wms?service=WMS&request=GetMap&layers=ProtoPj%3Agis_road_l7018&styles=&format=image%2Fpng&transparent=true&version=1.1.1&srs=EPSG%3A3857', {
       maxNativeZoom: 18,

@@ -12,6 +12,19 @@ const createGoogleLayer = (layers) =>
     subdomains: '123'
   });
 
+
+// based on http://hris.doh.go.th/highway
+const createDOHLayer = (layers) => 
+  L.tileLayer.wms(
+    "https://roadnet2.doh.go.th/geoserver/gwc/service/wms", {
+    layers,
+    srs: 'EPSG:3857',
+    format: 'image/png',
+    transparent: true,
+    attribution: '<a href="http://hris.doh.go.th/highway">hris.doh.go.th</a>'
+  });
+
+
 // based on http://cld.drr.go.th/gisCldIntegration/index.php
 const createDRRCLDLayer = (layers) => 
   L.tileLayer.wms(
@@ -40,7 +53,23 @@ const createDRRDynamicLayer = (layers) =>
 const fallback = { zoom: '12', center: [ 11.815238700979776, 99.79828689247371] };
 const { center, zoom } = parseLocationHash(location.href, fallback);
 
-const map = L.map('map', { zoomControl: true, loadingControl: true })
+const map = L.map('map', { 
+  zoomControl: true, 
+  loadingControl: true,
+  contextmenu: true,
+  contextmenuWidth: 200,
+  contextmenuItems: [
+    {
+      text: 'Edit in OSM (Maxar)',
+      callback: (e) => window.open(`https://www.openstreetmap.org/edit#background=Maxar-Standard&map=${map.getZoom()}/${e.latlng.lat}/${e.latlng.lng}`)
+    },
+    '-',
+    {
+      text: 'Open with Google Street View',
+      callback: (e) => window.open(`https://www.google.com/maps/@?api=1&map_action=pano&basemap=terrain&viewpoint=${e.latlng.lat},${e.latlng.lng}&zoom=${map.getZoom()}`)
+    }
+  ]
+})
 .setView(center, zoom)
 .on('moveend', (e) => updateLocationHash(e.target))
 .whenReady(e => e.target.attributionControl.setPrefix(false))
@@ -61,13 +90,17 @@ const layers = {
 };
 
 const overlays = buildOverlays([
-  { label: 'Highways (ทางหลวง) [gisportal]', height: 2, fill: '#FC0D1B', layer: createDRRDynamicLayer('show:-1,-1,-1,3').setZIndex(3) },
-  { label: "Highways 4+ Lanes (ทางหลวง 4+ ช่องจราจร) [gisportal]", height: 2, stroke: 'red', fill: '#FFFD38', layer:  createDRRDynamicLayer('show:-1,-1,-1,2').setZIndex(4) },
-  { label: "Highways (ทางหลวง) [cld]", height: 4, fill: '#5B5B5B', layer: createDRRCLDLayer('ProtoPj:gis_highway').setZIndex(2) },
-  { label: "Rural Roads / ทางหลวงชนบท [gisportal]", height: 2, fill: '#0A50A6', layer: createDRRDynamicLayer('show:-1,-1,-1,7').setZIndex(5) },
-  { label: "Rural Roads / ทางหลวงชนบท [cld]", height: 4, fill: '#F2474B', layer: createDRRCLDLayer('ProtoPj:gis_route').setZIndex(6) },
-  { label: "Local Roads (ถนนท้องถิ่น) [cld]", height: 2, fill: '#4DE052', stroke: '#64CE66', layer: createDRRCLDLayer('ProtoPj:gis_cld_route_spc').setZIndex(7) },
-  { label: "Minor Roads (ถนน l7018)", height: 4, fill: '#C1C1C1', layer: createDRRCLDLayer('ProtoPj:gis_road_l7018').setZIndex(1) }
+  { label: 'Highways [DOH]', height: 2, fill: '#FC0D1B', layer: createDOHLayer('roadnet2:lane').setZIndex(3) },
+  // { label: 'Highways aadt [DOH]', height: 2, fill: '#FC0D1B', layer: createDOHLayer('roadnet2:aadt').setZIndex(3) },
+  // { label: 'Highways surface-lane [DOH]', height: 2, fill: '#FC0D1B', layer: createDOHLayer('roadnet2:surface_lane').setZIndex(3) },
+  // { label: 'Highways sections [DOH]', height: 2, fill: '#FC0D1B', layer: createDOHLayer('roadnet2:section_km').setZIndex(3) },
+  // { label: 'Highways (ทางหลวง) [gisportal]', height: 2, fill: '#FC0D1B', layer: createDRRDynamicLayer('show:-1,-1,-1,3').setZIndex(3) },
+  // { label: "Highways 4+ Lanes (ทางหลวง 4+ ช่องจราจร) [gisportal]", height: 2, stroke: 'red', fill: '#FFFD38', layer:  createDRRDynamicLayer('show:-1,-1,-1,2').setZIndex(4) },
+  { label: "Highways [CLD]", height: 4, fill: '#5B5B5B', layer: createDRRCLDLayer('ProtoPj:gis_highway').setZIndex(2) },
+  { label: "Rural Roads [DRR]", height: 2, fill: '#0A50A6', layer: createDRRDynamicLayer('show:-1,-1,-1,7').setZIndex(5) },
+  { label: "Rural Roads [CLD]", height: 4, fill: '#F2474B', layer: createDRRCLDLayer('ProtoPj:gis_route').setZIndex(6) },
+  { label: "Local Roads [CLD]", height: 2, fill: '#4DE052', stroke: '#64CE66', layer: createDRRCLDLayer('ProtoPj:gis_cld_route_spc').setZIndex(7) }
+  // { label: "Minor Roads (ถนน l7018)", height: 4, fill: '#C1C1C1', layer: createDRRCLDLayer('ProtoPj:gis_road_l7018').setZIndex(1) }
 ]);
 
 layers['Transport Map'].addTo(map);

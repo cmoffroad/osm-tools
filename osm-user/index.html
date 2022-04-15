@@ -1,66 +1,9 @@
-
-<script>
-
-  function process () {
-    const name = decodeURIComponent(window.location.hash.substring(1) || 'cmoffroad');
-
-    document.write(`searching for user '${name}'`);
-    fetch(`http://whosthat.osmz.ru/whosthat.php?action=names&q=${name}`).then(response => response.json())
-    .then(users => {
-      if (users.length === 0)
-        document.write(`no OSM user under name '${name}'`)
-      else //if (users.length === 1)
-        writeUserSection(users.find(user => user.names[0] === name))
-      // else 
-      //   writeUsersList(users);
-    })
-    .catch(function (err) {
-      document.write(err.message);
-    });
-  }
-
-  function writeUsersList(users) {
-    const items = users.map(user => {
-      return `<li><a href="#${user.names[0]}">${user.names.join(', ')}</a></li>`;
-    })
-
-    document.write(`<h3>Users found</h3><ul>${items.join('\n')}</ul>`);
-  }
-
-  function writeUserSection(user) {
-
-    const name = user.names[user.names.length-1];
-    const otherNames = user.names.slice(0,-1);
-    
-
-    const links = {
-      'Whos that': `http://whosthat.osmz.ru/?q=${name}`,
-      'OSM profile': `https://www.openstreetmap.org/user/${name}`,
-      'MISSING MAPS profile': `https://www.missingmaps.org/users/#/${name}`,
-      'NEIS profile': `https://hdyc.neis-one.org/?${name}`,
-      'NEIS heatmap': `https://yosmhm.neis-one.org/?${name}`,
-      'NEIS changesets comments': `https://resultmaps.neis-one.org/osm-discussion-comments?uid=${user.id}&commented`,
-      'OSMCHA changesets': `https://osmcha.org/?filters={"users":[{"label":"${name}","value":"${name}"}],"date__gte":[{"label":"","value":""}]}`,
-      'OSMCHA changesets [major roads]': `https://osmcha.org/?filters={"date__gte":[{"label":"","value":""}],"users":[{"label":"${name}","value":"${name}"}],"reasons":[{"label":"Edited a major road","value":19}]}`,
-    }
-
-    const items = Object.entries(links).map(([label, url]) => {
-      return `<li><a href="${encodeURI(url)}" target="_blank">${label}</a></li>`;
-    })
-
-    document.write(`
-      <h3>${name}</h3>
-      <i>Previously: ${otherNames}</i>
-      <ul>${items.join('\n')}</ul>
-    `);
-
-    Object.values(links).forEach(url => window.open(url))
-  }
-
-  window.onhashchange = () => {
-    process();
-  }
-
-  process()
-  
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <div class="content"></div>
+  <script src="./index.js"></script>
+</body>
+</html>
