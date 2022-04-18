@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const { categories, roads } = require('../lib/config');
+const { categories, roads } = require('../lib/config2');
 const { lookupPaletteColor } = require('../lib/palette');
 
 let declarations = [];
@@ -30,13 +30,14 @@ const declaration = (groups, tags, attributes) => {
 }
 
 Object.entries(roads).forEach(([highway, cfg]) => {
-  const { color, dash, casing, stroke, fill } = cfg;
+  const { dash, casing, stroke, casingColor, strokeColor } = cfg;
+
   declarations.push(declaration(
     [ 'casing', 'casing-highlighted' ],
     [ `tag-highway-${highway}` ],
     { 
-      stroke: fill || 'black',
-      'stroke-width': casing*2 + stroke,
+      stroke: casingColor || 'black',
+      'stroke-width': `${casing*2 + stroke} !important`,
       'stroke-dasharray': dasharray(dash),
       'stroke-linecap': linecap(dash)
     }
@@ -46,30 +47,51 @@ Object.entries(roads).forEach(([highway, cfg]) => {
     [ 'stroke', 'stroke-highlighted' ],
     [ `tag-highway-${highway}` ],
     { 
-      stroke: lookupPaletteColor(color, 400),
-      'stroke-width': stroke,
+      stroke: lookupPaletteColor(strokeColor, 400),
+      'stroke-width': `${stroke} !important`,
       'stroke-dasharray': dasharray(dash),
       'stroke-linecap': linecap(dash)
     }
   ));
 });
 
-Object.values(categories).forEach(({ dash, tracktypes, surfaces }) => {
+Object.values(categories).forEach(({ casingColor, strokeColor, dash, tracktypes, surfaces }) => {
+  // declarations.push(declaration(
+  //   ['stroke', 'stroke-highlighted'], 
+  //   tracktypes.map(v => `tag-tracktype-${v}`),
+  //   {
+  //     'stroke': strokeColor,
+  //     'stroke-dasharray': dasharray(dash),
+  //     'stroke-linecap': linecap(dash)
+  //   }
+  // ));
+  // declarations.push(declaration(
+  //   [ 'casing', 'casing-highlighted' ],
+  //   tracktypes.map(v => `tag-tracktype-${v}`),
+  //   {
+  //     'stroke': casingColor,
+  //     'stroke-dasharray': dasharray(dash),
+  //     'stroke-linecap': linecap(dash)
+  //   }
+  // ));
+
   declarations.push(declaration(
     ['stroke', 'stroke-highlighted'], 
-    tracktypes.map(v => `tag-tracktype-${v}`),
+    surfaces.map(v => `tag-surface-${v.replace(/\:/g, '\\:')}`),
     {
-      'stroke-dasharray': dasharray(dash),
-      'stroke-linecap': linecap(dash)
+      'stroke': strokeColor,
+      'stroke-dasharray': dash ? `${dasharray(dash)}` : undefined,
+      'stroke-linecap': dash ? `${linecap(dash)}` : undefined
     }
   ));
 
   declarations.push(declaration(
-    ['stroke', 'stroke-highlighted'], 
-    surfaces.map(v => `tag-surface-${v.replace(/\:/g, '-')}`),
+    [ 'casing', 'casing-highlighted' ],
+    surfaces.map(v => `tag-surface-${v.replace(/\:/g, '\:')}`),
     {
-      'stroke-dasharray': dasharray(dash),
-      'stroke-linecap': linecap(dash)
+      'stroke': casingColor,
+      'stroke-dasharray': dash ? `${dasharray(dash)}` : undefined,
+      'stroke-linecap': dash ? `${linecap(dash)}` : undefined
     }
   ));
 });
