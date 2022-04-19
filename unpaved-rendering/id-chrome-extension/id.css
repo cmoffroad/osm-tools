@@ -181,8 +181,8 @@
 /* tags: tag-highway-tertiary + groups: casing, casing-highlighted */
 .data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-highway-tertiary,
 .data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-highway-tertiary {
-  stroke: #000;
-  stroke-width: 10 !important;
+  stroke: transparent;
+  stroke-width: 5 !important;
   stroke-dasharray: none;
   stroke-linecap: none;
 }
@@ -190,8 +190,8 @@
 /* tags: tag-highway-tertiary + groups: stroke, stroke-highlighted */
 .data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-highway-tertiary,
 .data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-highway-tertiary {
-  stroke: #FFF;
-  stroke-width: 6 !important;
+  stroke: #fa00ff;
+  stroke-width: 3 !important;
   stroke-dasharray: none;
   stroke-linecap: none;
 }
@@ -340,125 +340,129 @@
   stroke-linecap: none;
 }
 
-/* tags: tag-surface-paved, tag-surface-chipseal, tag-surface-asphalt, tag-surface-concrete, tag-surface-concrete\:plates, tag-surface-concrete\:lanes + groups: stroke, stroke-highlighted */
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-paved,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-paved,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-chipseal,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-chipseal,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-asphalt,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-asphalt,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-concrete,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-concrete,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-concrete\:plates,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-concrete\:plates,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-concrete\:lanes,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-concrete\:lanes {
+/* tags: tag-survey-ground.tag-surface-paved, tag-survey-ground.tag-surface-chipseal, tag-survey-ground.tag-surface-asphalt, tag-survey-ground.tag-surface-concrete, tag-survey-ground.tag-surface-concrete\:plates, tag-survey-ground.tag-surface-concrete\:lanes + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-paved,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-paved,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-chipseal,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-chipseal,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-asphalt,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-asphalt,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-concrete,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-concrete,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-concrete\:plates,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-concrete\:plates,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-concrete\:lanes,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-concrete\:lanes {
   stroke: #FFF;
   stroke-dasharray: undefined;
   stroke-linecap: undefined;
 }
 
-/* tags: tag-surface-paved, tag-surface-chipseal, tag-surface-asphalt, tag-surface-concrete, tag-surface-concrete:plates, tag-surface-concrete:lanes + groups: casing, casing-highlighted */
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-paved,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-paved,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-chipseal,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-chipseal,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-asphalt,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-asphalt,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-concrete,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-concrete,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-concrete:plates,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-concrete:plates,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-concrete:lanes,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-concrete:lanes {
+/* tags: tag-survey-ground.tag-surface-paved, tag-survey-ground.tag-surface-chipseal, tag-survey-ground.tag-surface-asphalt, tag-survey-ground.tag-surface-concrete, tag-survey-ground.tag-surface-concrete:plates, tag-survey-ground.tag-surface-concrete:lanes + groups: casing, casing-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-paved,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-paved,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-chipseal,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-chipseal,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-asphalt,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-asphalt,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-concrete,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-concrete,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-concrete:plates,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-concrete:plates,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-concrete:lanes,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-concrete:lanes {
   stroke: #000;
   stroke-dasharray: undefined;
   stroke-linecap: undefined;
 }
 
-/* tags: tag-surface-unpaved, tag-surface-compacted, tag-surface-fine_gravel, tag-surface-paving_stones, tag-surface-sett, tag-surface-unhewn_cobblestone, tag-surface-cobblestone, tag-surface-metal, tag-surface-wood, tag-surface-grass_paver, tag-surface-woodchips, tag-surface-rock, tag-surface-pebblestone, tag-surface-ground, tag-surface-dirt, tag-surface-earth, tag-surface-grass, tag-surface-mud, tag-surface-sand + groups: stroke, stroke-highlighted */
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-unpaved,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-unpaved,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-compacted,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-compacted,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-fine_gravel,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-fine_gravel,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-paving_stones,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-paving_stones,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-sett,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-sett,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-unhewn_cobblestone,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-unhewn_cobblestone,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-cobblestone,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-cobblestone,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-metal,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-metal,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-wood,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-wood,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-grass_paver,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-grass_paver,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-woodchips,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-woodchips,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-rock,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-rock,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-pebblestone,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-pebblestone,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-ground,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-ground,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-dirt,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-dirt,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-earth,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-earth,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-grass,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-grass,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-mud,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-mud,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-surface-sand,
-.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-surface-sand {
+/* tags: tag-survey-ground.tag-surface-unpaved, tag-survey-ground.tag-surface-compacted, tag-survey-ground.tag-surface-gravel, tag-survey-ground.tag-surface-fine_gravel, tag-survey-ground.tag-surface-paving_stones, tag-survey-ground.tag-surface-sett, tag-survey-ground.tag-surface-unhewn_cobblestone, tag-survey-ground.tag-surface-cobblestone, tag-survey-ground.tag-surface-metal, tag-survey-ground.tag-surface-wood, tag-survey-ground.tag-surface-grass_paver, tag-survey-ground.tag-surface-woodchips, tag-survey-ground.tag-surface-rock, tag-survey-ground.tag-surface-pebblestone, tag-survey-ground.tag-surface-ground, tag-survey-ground.tag-surface-dirt, tag-survey-ground.tag-surface-earth, tag-survey-ground.tag-surface-grass, tag-survey-ground.tag-surface-mud, tag-survey-ground.tag-surface-sand + groups: stroke, stroke-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-unpaved,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-unpaved,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-compacted,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-compacted,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-gravel,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-gravel,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-fine_gravel,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-fine_gravel,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-paving_stones,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-paving_stones,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-sett,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-sett,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-unhewn_cobblestone,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-unhewn_cobblestone,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-cobblestone,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-cobblestone,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-metal,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-metal,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-wood,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-wood,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-grass_paver,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-grass_paver,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-woodchips,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-woodchips,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-rock,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-rock,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-pebblestone,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-pebblestone,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-ground,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-ground,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-dirt,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-dirt,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-earth,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-earth,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-grass,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-grass,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-mud,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-mud,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke path.tag-highway.tag-survey-ground.tag-surface-sand,
+.data-layer.osm .layer-osm.lines .linegroup.line-stroke-highlighted path.tag-highway.tag-survey-ground.tag-surface-sand {
   stroke: #000;
   stroke-dasharray: undefined;
   stroke-linecap: undefined;
 }
 
-/* tags: tag-surface-unpaved, tag-surface-compacted, tag-surface-fine_gravel, tag-surface-paving_stones, tag-surface-sett, tag-surface-unhewn_cobblestone, tag-surface-cobblestone, tag-surface-metal, tag-surface-wood, tag-surface-grass_paver, tag-surface-woodchips, tag-surface-rock, tag-surface-pebblestone, tag-surface-ground, tag-surface-dirt, tag-surface-earth, tag-surface-grass, tag-surface-mud, tag-surface-sand + groups: casing, casing-highlighted */
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-unpaved,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-unpaved,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-compacted,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-compacted,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-fine_gravel,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-fine_gravel,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-paving_stones,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-paving_stones,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-sett,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-sett,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-unhewn_cobblestone,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-unhewn_cobblestone,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-cobblestone,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-cobblestone,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-metal,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-metal,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-wood,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-wood,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-grass_paver,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-grass_paver,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-woodchips,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-woodchips,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-rock,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-rock,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-pebblestone,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-pebblestone,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-ground,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-ground,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-dirt,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-dirt,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-earth,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-earth,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-grass,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-grass,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-mud,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-mud,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-surface-sand,
-.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-surface-sand {
+/* tags: tag-survey-ground.tag-surface-unpaved, tag-survey-ground.tag-surface-compacted, tag-survey-ground.tag-surface-gravel, tag-survey-ground.tag-surface-fine_gravel, tag-survey-ground.tag-surface-paving_stones, tag-survey-ground.tag-surface-sett, tag-survey-ground.tag-surface-unhewn_cobblestone, tag-survey-ground.tag-surface-cobblestone, tag-survey-ground.tag-surface-metal, tag-survey-ground.tag-surface-wood, tag-survey-ground.tag-surface-grass_paver, tag-survey-ground.tag-surface-woodchips, tag-survey-ground.tag-surface-rock, tag-survey-ground.tag-surface-pebblestone, tag-survey-ground.tag-surface-ground, tag-survey-ground.tag-surface-dirt, tag-survey-ground.tag-surface-earth, tag-survey-ground.tag-surface-grass, tag-survey-ground.tag-surface-mud, tag-survey-ground.tag-surface-sand + groups: casing, casing-highlighted */
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-unpaved,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-unpaved,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-compacted,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-compacted,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-gravel,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-gravel,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-fine_gravel,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-fine_gravel,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-paving_stones,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-paving_stones,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-sett,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-sett,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-unhewn_cobblestone,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-unhewn_cobblestone,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-cobblestone,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-cobblestone,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-metal,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-metal,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-wood,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-wood,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-grass_paver,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-grass_paver,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-woodchips,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-woodchips,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-rock,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-rock,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-pebblestone,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-pebblestone,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-ground,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-ground,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-dirt,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-dirt,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-earth,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-earth,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-grass,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-grass,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-mud,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-mud,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing path.tag-highway.tag-survey-ground.tag-surface-sand,
+.data-layer.osm .layer-osm.lines .linegroup.line-casing-highlighted path.tag-highway.tag-survey-ground.tag-surface-sand {
   stroke: #000;
   stroke-dasharray: undefined;
   stroke-linecap: undefined;

@@ -76,8 +76,9 @@ Object.values(categories).forEach(({ casingColor, strokeColor, dash, tracktypes,
   // ));
 
   declarations.push(declaration(
-    ['stroke', 'stroke-highlighted'], 
-    surfaces.map(v => `tag-surface-${v.replace(/\:/g, '\\:')}`),
+    ['stroke', 'stroke-highlighted'],
+
+    surfaces.map(v => `tag-survey-ground.tag-surface-${v.replace(/\:/g, '\\:')}`),
     {
       'stroke': strokeColor,
       'stroke-dasharray': dash ? `${dasharray(dash)}` : undefined,
@@ -87,7 +88,7 @@ Object.values(categories).forEach(({ casingColor, strokeColor, dash, tracktypes,
 
   declarations.push(declaration(
     [ 'casing', 'casing-highlighted' ],
-    surfaces.map(v => `tag-surface-${v.replace(/\:/g, '\:')}`),
+    surfaces.map(v => `tag-survey-ground.tag-surface-${v.replace(/\:/g, '\:')}`),
     {
       'stroke': casingColor,
       'stroke-dasharray': dash ? `${dasharray(dash)}` : undefined,

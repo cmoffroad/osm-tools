@@ -12,13 +12,15 @@
   "content_scripts": [
     {
       "matches": [ 
-        "https://www.openstreetmap.org/id"
+        "https://www.openstreetmap.org/id",
+        "http://localhost:8080/"
       ],
       "all_frames": true,
       "css" : [ "id.css" ]
     }
   ],
   "host_permissions": [
-    "https://www.openstreetmap.org/"
+    "https://www.openstreetmap.org/",
+    "http://localhost:8080/"
   ]
 }

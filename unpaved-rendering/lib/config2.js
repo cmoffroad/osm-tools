@@ -14,7 +14,7 @@ const categories = {
   unpaved:    { 
     ...colors.unpaved, 
     tracktypes: [ 'grade2', 'grade3', 'grade4', 'grade5' ],
-    surfaces: [ 'unpaved', 'compacted', 'fine_gravel', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'metal', 'wood', 'grass_paver', 'woodchips', 'rock', 'pebblestone', 'ground', 'dirt', 'earth', 'grass', 'mud', 'sand' ]
+    surfaces: [ 'unpaved', 'compacted', 'gravel', 'fine_gravel', 'paving_stones', 'sett', 'unhewn_cobblestone', 'cobblestone', 'metal', 'wood', 'grass_paver', 'woodchips', 'rock', 'pebblestone', 'ground', 'dirt', 'earth', 'grass', 'mud', 'sand' ]
   }
 };
 
@@ -56,7 +56,7 @@ const roads = {
     ...sizes.medium,
   },
   tertiary: {
-    ...sizes.large,
+    ...sizes.medium,
   },
   secondary_link: {
     ...sizes.medium,
