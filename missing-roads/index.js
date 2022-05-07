@@ -66,7 +66,7 @@ const overlaysMap = {
       opacity: 1
     }).setZIndex(2),
   'strava': 
-    L.tileLayer('https://heatmap-external-a.strava.com/tiles/all/bluered/{z}/{x}/{y}.png?px=256', { 
+    L.tileLayer('https://heatmap-external-{s}.strava.com/tiles-auth/all/red/{z}/{x}/{y}.png?Key-Pair-Id=APKAIDPUN4QMG7VUQPSA&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vaGVhdG1hcC1leHRlcm5hbC0qLnN0cmF2YS5jb20vKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTY1MjM0NDE1OH0sIkRhdGVHcmVhdGVyVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNjUxMTIwMTU4fX19XX0_&Signature=GmS6dXD7oUelGAXhU8L0BwO~7oIV3k3S0U58baqkWC5yj8HTxu1O9Tv2BweRkp6MsW1TA1pfwxTeM61vm9bCWOyrsLCHIpnjAhFQfCjQfwkPp60SgXyqjcCDHQK1ARFW6EJsREUa0g6OcJMHgqgEkvrQwQ5~ZTIzsmzoGKQwZYnT3SKYmjeB2uOcE-oXxSxgYvbctXnvpu-MBrUbtk2RZhilNaNrfdvKGs4VJGH-M9PhdDXL-csQ7g16JsDNSyLYSTbVOehFE05m8E7UgCcOL1jIM5azpceamGvoieGI4OOTcuDIyzk3UuHSE5GGFT7YIDSsyz7WqIgV4aJvIK0Dig__', { 
       maxNativeZoom: 12,
       maxZoom,
       opacity: 1
