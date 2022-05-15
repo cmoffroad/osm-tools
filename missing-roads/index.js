@@ -66,7 +66,7 @@ const overlaysMap = {
       opacity: 1
     }).setZIndex(2),
   'strava': 
-    L.tileLayer('https://heatmap-external-{s}.strava.com/tiles-auth/all/red/{z}/{x}/{y}.png?Key-Pair-Id=APKAIDPUN4QMG7VUQPSA&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vaGVhdG1hcC1leHRlcm5hbC0qLnN0cmF2YS5jb20vKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTY1MjM0NDE1OH0sIkRhdGVHcmVhdGVyVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNjUxMTIwMTU4fX19XX0_&Signature=GmS6dXD7oUelGAXhU8L0BwO~7oIV3k3S0U58baqkWC5yj8HTxu1O9Tv2BweRkp6MsW1TA1pfwxTeM61vm9bCWOyrsLCHIpnjAhFQfCjQfwkPp60SgXyqjcCDHQK1ARFW6EJsREUa0g6OcJMHgqgEkvrQwQ5~ZTIzsmzoGKQwZYnT3SKYmjeB2uOcE-oXxSxgYvbctXnvpu-MBrUbtk2RZhilNaNrfdvKGs4VJGH-M9PhdDXL-csQ7g16JsDNSyLYSTbVOehFE05m8E7UgCcOL1jIM5azpceamGvoieGI4OOTcuDIyzk3UuHSE5GGFT7YIDSsyz7WqIgV4aJvIK0Dig__', { 
+    L.tileLayer('https://heatmap-external-{switch:a,b,c}.strava.com/tiles-auth/all/hot/{zoom}/{x}/{y}.png?Key-Pair-Id=APKAIDPUN4QMG7VUQPSA&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vaGVhdG1hcC1leHRlcm5hbC0qLnN0cmF2YS5jb20vKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTY1MzIxNDI5MX0sIkRhdGVHcmVhdGVyVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNjUxOTkwMjkxfX19XX0_&Signature=ZU-OUtZDpksFutA3cLJJVh0AsbTxfLH-u2oF2a4FDC7GvS9aWqqcb32kK0yLpwivpPSc1lvtKq7aNJYmCkzaZRxA517RoozKEPGCrbu4BrcsO~igDL850tVv-lit4uHOFnduYRpZJeQFnk4Yq91cE9lETIMLgpchOnUJ2kES-jQ8h7lvQawZDRSAcwTYkRC5O~KPlTCztX8NEQi-DvVy~EEd7ISAPejFRY~eNM-TKBSlG1emfvREXpTj1Lgg3wae1VP1nIwlqmKkgBo3vN0YgVUSl1HezPY6fRNWbtmkVCWZ62vsGWfFy9u6e~keKSIDZtatuw8cMp~BlLOwxZ9yHw__', { 
       maxNativeZoom: 12,
       maxZoom,
       opacity: 1
