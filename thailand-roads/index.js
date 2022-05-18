@@ -90,8 +90,8 @@ const layers = {
 };
 
 const overlays = buildOverlays([
-  { label: 'Highways [DOH]', height: 2, fill: '#FC0D1B', layer: createDOHLayer('roadnet2:lane').setZIndex(3) },
-  // { label: 'Highways aadt [DOH]', height: 2, fill: '#FC0D1B', layer: createDOHLayer('roadnet2:aadt').setZIndex(3) },
+  // { label: 'Highways [DOH]', height: 2, fill: '#FC0D1B', layer: createDOHLayer('roadnet2:lane').setZIndex(3) },
+  { label: 'Highways aadt [DOH]', height: 2, fill: '#FC0D1B', layer: createDOHLayer('roadnet2:aadt').setZIndex(3) },
   // { label: 'Highways surface-lane [DOH]', height: 2, fill: '#FC0D1B', layer: createDOHLayer('roadnet2:surface_lane').setZIndex(3) },
   // { label: 'Highways sections [DOH]', height: 2, fill: '#FC0D1B', layer: createDOHLayer('roadnet2:section_km').setZIndex(3) },
   // { label: 'Highways (ทางหลวง) [gisportal]', height: 2, fill: '#FC0D1B', layer: createDRRDynamicLayer('show:-1,-1,-1,3').setZIndex(3) },
