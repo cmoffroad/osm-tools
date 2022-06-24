@@ -4,8 +4,8 @@ const maxZoom = 24;
 const fallback = parseLocationHash('#map=14/18.9475433/99.0693038');
 const { center, zoom } = parseLocationHash(location.href, fallback);
 
-const map = L.map('map', { 
-  zoomControl: true, 
+const map = L.map('map', {
+  zoomControl: true,
   loadingControl: true,
   maxZoom,
   contextmenu: true,
@@ -41,14 +41,14 @@ const baseLayersMap = {
       maxNativeZoom: 18,
       maxZoom
     }),
-  'gsat': 
+  'gsat':
     L.tileLayer('https://mt3.Google.com/vt?z={z}&x={x}&y={y}&lyrs=s', {
       maxNativeZoom: 21,
       maxZoom
     })
     .setZIndex(0)
     .on('load', (e) => invert = false),
-  'worldtopomap': 
+  'worldtopomap':
     L.tileLayer('https://services.arcgisonline.com/arcgis/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
       maxNativeZoom: 19,
       maxZoom,
@@ -59,34 +59,34 @@ const baseLayersMap = {
 };
 
 const overlaysMap = {
-  'osm-gps': 
+  'osm-gps':
     L.tileLayer('https://{s}.gps-tile.openstreetmap.org/lines/{z}/{x}/{y}.png', {
       maxNativeZoom: 18,
       maxZoom,
       opacity: 1
     }).setZIndex(2),
-  'strava': 
-    L.tileLayer('https://heatmap-external-{switch:a,b,c}.strava.com/tiles-auth/all/hot/{zoom}/{x}/{y}.png?Key-Pair-Id=APKAIDPUN4QMG7VUQPSA&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vaGVhdG1hcC1leHRlcm5hbC0qLnN0cmF2YS5jb20vKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTY1MzIxNDI5MX0sIkRhdGVHcmVhdGVyVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNjUxOTkwMjkxfX19XX0_&Signature=ZU-OUtZDpksFutA3cLJJVh0AsbTxfLH-u2oF2a4FDC7GvS9aWqqcb32kK0yLpwivpPSc1lvtKq7aNJYmCkzaZRxA517RoozKEPGCrbu4BrcsO~igDL850tVv-lit4uHOFnduYRpZJeQFnk4Yq91cE9lETIMLgpchOnUJ2kES-jQ8h7lvQawZDRSAcwTYkRC5O~KPlTCztX8NEQi-DvVy~EEd7ISAPejFRY~eNM-TKBSlG1emfvREXpTj1Lgg3wae1VP1nIwlqmKkgBo3vN0YgVUSl1HezPY6fRNWbtmkVCWZ62vsGWfFy9u6e~keKSIDZtatuw8cMp~BlLOwxZ9yHw__', { 
+  'strava':
+    L.tileLayer('https://heatmap-external-{switch:a,b,c}.strava.com/tiles-auth/all/hot/{z}/{x}/{y}.png?Key-Pair-Id=APKAIDPUN4QMG7VUQPSA&Policy=eyJTdGF0ZW1lbnQiOiBbeyJSZXNvdXJjZSI6Imh0dHBzOi8vaGVhdG1hcC1leHRlcm5hbC0qLnN0cmF2YS5jb20vKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTY1NjEzMDQ2N30sIkRhdGVHcmVhdGVyVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNjU0OTA2NDY3fX19XX0_&Signature=HJdlChLBZ9lLHGqWhG2XdnUWCNbGRg21rkgIYl66dkBrN6fMNGQApImhYsntqpBbTLIph2k4oovrpNRcdl7wBDaSLkFi405XBhWekdxUNoil8kIFPyYQ8tmXcbAaG3pJVGMPpSjHDVx3gVpM~RC8oLUpPFSLBRox95LLyAxRtppyBcprUMZ17rFrVDQQHbqF8tcbHLs0ZKN-rXItcsLUQOqUUBNmM16-IdyxNS1QWpGZW1fLCj5nP2FAUyT~v57mKFJirLZ6A05z1HIxHLS2uEX~Ei1VIHKOwDhW0wleuqxhPKz8qANr~kSOfarmEODGN41jhL7i2mXxwu9eJ6KhnQ__', {
       maxNativeZoom: 12,
       maxZoom,
       opacity: 1
     })
     .setZIndex(2),
-  'cld': 
+  'cld':
     L.tileLayer.wms('http://cld.drr.go.th/geoserver/gwc/service/wms?service=WMS&request=GetMap&layers=ProtoPj%3Agis_cld_route_spc&styles=&format=image%2Fpng&transparent=true&version=1.1.1&srs=EPSG%3A3857', {
       maxNativeZoom: 18,
       maxZoom,
       opacity: 0.5,
       className: invert && 'invert'
     }).setZIndex(1),
-  'l7018': 
+  'l7018':
     L.tileLayer.wms('http://cld.drr.go.th/geoserver/gwc/service/wms?service=WMS&request=GetMap&layers=ProtoPj%3Agis_road_l7018&styles=&format=image%2Fpng&transparent=true&version=1.1.1&srs=EPSG%3A3857', {
       maxNativeZoom: 18,
       maxZoom,
       opacity: 0.5,
       className: invert && 'invert'
     }).setZIndex(1),
-  'tomtom': 
+  'tomtom':
     L.tileLayer('https://{s}.api.tomtom.com/map/1/tile/hybrid/main/{z}/{x}/{y}.png?key=8h504Wc4AXL6OPndqhrtKf70AovVBL3V', {
       maxNativeZoom: 18,
       maxZoom,
@@ -94,7 +94,7 @@ const overlaysMap = {
       className: invert && 'invert'
     })
     .setZIndex(1),
-  'groads': 
+  'groads':
     L.tileLayer('https://mt3.Google.com/vt?z={z}&x={x}&y={y}&lyrs=h', {
       maxNativeZoom: 22,
       maxZoom,
@@ -102,8 +102,8 @@ const overlaysMap = {
       className: invert && 'invert'
     })
     .setZIndex(1),
-  'mapbox_locator_overlay': 
-    L.tileLayer('https://api.mapbox.com/styles/v1/openstreetmap/ckasmteyi1tda1ipfis6wqhuq/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib3BlbnN0cmVldG1hcCIsImEiOiJja2w5YWtqbDAwcGFkMnZtdngzbWtlbDE3In0.U3DODCbBGFfFXkilttz1YA', { 
+  'mapbox_locator_overlay':
+    L.tileLayer('https://api.mapbox.com/styles/v1/openstreetmap/ckasmteyi1tda1ipfis6wqhuq/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoib3BlbnN0cmVldG1hcCIsImEiOiJja2w5YWtqbDAwcGFkMnZtdngzbWtlbDE3In0.U3DODCbBGFfFXkilttz1YA', {
       minNativeZoom: 15,
       maxNativeZoom: 22,
       maxZoom,
@@ -114,15 +114,15 @@ const overlaysMap = {
 
 baseLayersMap.gsat.addTo(map);
 
-L.control.layers(baseLayersMap, overlaysMap, { 
-  position: 'bottomright', 
+L.control.layers(baseLayersMap, overlaysMap, {
+  position: 'bottomright',
   collapsed: false,
   autoZIndex: false
 }).addTo(map);
 
 L.control.locate().addTo(map);
 
-Object.values(overlaysMap).forEach(overlay => map.addLayer(overlay));
+// Object.values(overlaysMap).forEach(overlay => map.addLayer(overlay));
 
 // TILE LOADING PROGRESS CONTROL
 
@@ -151,7 +151,7 @@ const search = new GeoSearch.GeoSearchControl({
   searchLabel: 'Enter address or paste a OSM URL with a hash fragment (#)'
 }).addTo(map);
 
-search.searchElement.input.onkeyup = evt => { 
+search.searchElement.input.onkeyup = evt => {
   if (evt.key === 'Enter') {
     searchURLAndSetMapView(evt.target, map);
   }
